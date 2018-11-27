@@ -1,0 +1,11 @@
+<h1>Product Types</h1>
+<%= link_to "Add a new producttype",new_producttype_path %>
+<% @producttypes.each do |producttype| %>
+<h2><%= producttype.name %></h2>
+<p><%= producttype.description %></p>
+<%= link_to "Details",producttype_path(producttype) %>
+<%= link_to "Edit",edit_producttype_path(producttype) %>
+<%= link_to "Delete", producttype_path(producttype),
+     method: :delete,
+     data: { confirm: "Are you sure?" } %>
+<% end %>
