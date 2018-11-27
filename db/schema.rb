@@ -10,10 +10,52 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_27_104216) do
+ActiveRecord::Schema.define(version: 2018_11_27_134532) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "products", force: :cascade do |t|
+    t.string "name"
+    t.float "price"
+    t.text "description"
+    t.bigint "user_id"
+    t.bigint "producttype_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["producttype_id"], name: "index_products_on_producttype_id"
+    t.index ["user_id"], name: "index_products_on_user_id"
+  end
+
+  create_table "producttypes", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_producttypes_on_user_id"
+  end
+
+  create_table "sales", force: :cascade do |t|
+    t.bigint "product_id"
+    t.integer "discount"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_sales_on_product_id"
+    t.index ["user_id"], name: "index_sales_on_user_id"
+  end
+
+  create_table "searcheds", force: :cascade do |t|
+    t.string "keyword"
+    t.string "location"
+    t.bigint "user_id"
+    t.bigint "producttype_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["producttype_id"], name: "index_searcheds_on_producttype_id"
+    t.index ["user_id"], name: "index_searcheds_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,4 +69,11 @@ ActiveRecord::Schema.define(version: 2018_11_27_104216) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "products", "producttypes"
+  add_foreign_key "products", "users"
+  add_foreign_key "producttypes", "users"
+  add_foreign_key "sales", "products"
+  add_foreign_key "sales", "users"
+  add_foreign_key "searcheds", "producttypes"
+  add_foreign_key "searcheds", "users"
 end
