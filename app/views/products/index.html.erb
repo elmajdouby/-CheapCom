@@ -6,10 +6,11 @@
           <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= product.thumb %>);">
             <div class="card-category"><%= product.producttype.name %></div>
             <div class="card-description">
-              <h2><%= product.name %></h2>
-              <p><%= product.name %></p>
+              <h2 class="productname"><%= product.name %></h2>
+              <p class="productdescription"><%= product.description %></p>
             </div>
             <img class="card-user avatar" src="https://kitt.lewagon.com/placeholder/users/atmosfeer">
+             <%= image_tag "shopping-cart.png",:class => "addtochart", height: 40 %>
             <a class="card-link" href="<%= product_path(product) %>"></a>
         </div>
       </div>

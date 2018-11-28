@@ -5,6 +5,7 @@
   background-position: center;
   color: white;
   position: relative;
+  margin-top: 10px;
 }
 .card-user {
   position: absolute;
@@ -22,8 +23,8 @@
 }
 .card-description {
   position: absolute;
-  bottom: 10px;
-  left: 10px;
+  bottom: 5px;
+  left: 5px;
 }
 .card-description h2 {
   font-size: 24px;
@@ -49,4 +50,21 @@
 
 .products{
   margin-top: 20px;
+}
+
+.productname{
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+.productdescription{
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+
+.addtochart{
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  width: 30px;
+  height: 30px;
 }

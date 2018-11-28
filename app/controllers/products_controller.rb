@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
-  before_action :set_product, only: [:show, :edit, :update, :destroy]
-  after_action :set_authorize, only: [:show, :new, :create, :edit, :update, :destroy]
+  before_action :set_product, only: [:show, :edit, :update, :destroy, :buy]
+  after_action :set_authorize, only: [:show, :new, :create, :edit, :update, :destroy, :buy]
   # GET /products
   # GET /products.json
   def index
@@ -16,6 +16,10 @@ class ProductsController < ApplicationController
   # GET /products/new
   def new
     @product = Product.new
+  end
+
+  def buy
+
   end
 
   # GET /products/1/edit
