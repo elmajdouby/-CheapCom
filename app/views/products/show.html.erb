@@ -12,7 +12,7 @@
         <p> <%= @product.user.email %></p>
         <br/>
         <br/>
-        <button type="button" class="btn btn-success">Buy now</button>
+       <a href="<%= buyproduct_path(@product) %>" <button type="button" class="btn btn-success">Buy now</button></a>
         <button type="button" class="btn btn-secondary">Get -10 % if you buy in (50min)</button>
     </div>
  </div>
