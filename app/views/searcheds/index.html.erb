@@ -1,0 +1,10 @@
+<h1>Searched</h1>
+<%= link_to "Add a new search",new_searched_path %>
+<% @searcheds.each do |searched| %>
+<h2><%= searched.keyword %></h2>
+<p><%= searched.location %></p>
+<%= link_to "Details",searched_path(searched) %>
+<%= link_to "Edit",edit_searched_path(searched) %>
+<% end %>
+
+
