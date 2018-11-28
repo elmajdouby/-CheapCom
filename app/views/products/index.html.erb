@@ -1,0 +1,14 @@
+
+    <% @products.each do |product| %>
+
+      <div class="products col-xs-12 col-sm-4 col-md-3" style="background: green url(<%= product.thumb %>)">
+        <h1 class="title"><%= product.name %></h1>
+        <h3 class="producttype"><%= product.producttype.name %></h3>
+      </div>
+
+      <br>
+
+    <% end %>
+
+
+<%= link_to 'New Product', new_product_path %>
