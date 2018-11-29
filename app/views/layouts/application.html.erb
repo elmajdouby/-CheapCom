@@ -12,8 +12,10 @@
   <body>
 
     <%= render 'shared/navbar' %>
+    <% if current_user %>
+    <%= render 'shared/logged_searchbar' %>
     <%= render 'shared/flashes' %>
-    <% if !current_user %>
+    <% else %>
     <%= render 'shared/products_navbar' %>
     <% end %>
     <div class="container">
