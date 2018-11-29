@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index]
+  skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :set_product, only: [:show, :edit, :update, :destroy, :buy]
   after_action :set_authorize, only: [:show, :new, :create, :edit, :update, :destroy, :buy]
   # GET /products

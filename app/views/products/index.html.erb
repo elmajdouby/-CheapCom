@@ -1,4 +1,4 @@
-<h1> Futured items </h1>
+<h2> Futured items </h2>
 <div class="products">
   <div class="container">
       <% @products.each do |product| %>
@@ -7,9 +7,8 @@
             <div class="card-category"><%= product.producttype.name %></div>
             <div class="card-description">
               <h2 class="productname"><%= product.name %></h2>
-              <p class="productdescription"><%= product.description %></p>
             </div>
-            <img class="card-user avatar" src="https://kitt.lewagon.com/placeholder/users/atmosfeer">
+            <img class="card-user avatar" src=<%= product.user.avatar %>>
              <%= image_tag "shopping-cart.png",:class => "addtochart", height: 40 %>
             <a class="card-link" href="<%= product_path(product) %>"></a>
         </div>
