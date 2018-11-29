@@ -9,7 +9,7 @@
         <P>Description : <%= @product.description %></P>
         <P>Category : <i><%= @product.producttype.name %></i></P>
         <h3> Store </h3>
-        <p> <%= @product.user.email %></p>
+        <p> <%= @product.user.username %></p>
         <br/>
         <br/>
        <a href="<%= buyproduct_path(@product) %>" <button type="button" class="btn btn-success">Buy now</button></a>
