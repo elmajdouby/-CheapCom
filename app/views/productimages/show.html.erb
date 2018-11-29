@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Alt:</strong>
+  <%= @productimage.alt %>
+</p>
+
+<p>
+  <strong>Src:</strong>
+  <%= @productimage.src %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @productimage.user %>
+</p>
+
+<p>
+  <strong>Product:</strong>
+  <%= @productimage.product %>
+</p>
+
+<%= link_to 'Edit', edit_productimage_path(@productimage) %> |
+<%= link_to 'Back', productimages_path %>
