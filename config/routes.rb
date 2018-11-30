@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   resources :producttypes
   get '/users',   to: 'users#index'
   get "/dashboard" => "pages#home"
+
 end

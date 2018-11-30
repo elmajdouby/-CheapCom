@@ -1,7 +1,48 @@
 require 'test_helper'
 
 class ProductimagesControllerTest < ActionDispatch::IntegrationTest
-  # test "the truth" do
-  #   assert true
-  # end
+  setup do
+    @productimage = productimages(:one)
+  end
+
+  test "should get index" do
+    get productimages_url
+    assert_response :success
+  end
+
+  test "should get new" do
+    get new_productimage_url
+    assert_response :success
+  end
+
+  test "should create productimage" do
+    assert_difference('Productimage.count') do
+      post productimages_url, params: { productimage: { alt: @productimage.alt, product_id: @productimage.product_id, src: @productimage.src, user_id: @productimage.user_id } }
+    end
+
+    assert_redirected_to productimage_url(Productimage.last)
+  end
+
+  test "should show productimage" do
+    get productimage_url(@productimage)
+    assert_response :success
+  end
+
+  test "should get edit" do
+    get edit_productimage_url(@productimage)
+    assert_response :success
+  end
+
+  test "should update productimage" do
+    patch productimage_url(@productimage), params: { productimage: { alt: @productimage.alt, product_id: @productimage.product_id, src: @productimage.src, user_id: @productimage.user_id } }
+    assert_redirected_to productimage_url(@productimage)
+  end
+
+  test "should destroy productimage" do
+    assert_difference('Productimage.count', -1) do
+      delete productimage_url(@productimage)
+    end
+
+    assert_redirected_to productimages_url
+  end
 end
