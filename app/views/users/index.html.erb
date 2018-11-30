@@ -1,0 +1,11 @@
+<% @users = User.all %>
+<div class="container">
+  <% @users.each do |user| %>
+    <div class="col-xs-12 col-md-6">
+     <img  height="40" width="40" src=<%= user.avatar %> />
+      <%= user.username %><br/>
+      <%= user.email %><br/>
+      <%= user.role %><br/>
+    </div>
+  <% end %>
+</div>
