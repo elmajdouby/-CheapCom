@@ -10,14 +10,13 @@
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
   <body>
-
     <%= render 'shared/navbar' %>
-    <% if current_user %>
+    <% if current_user && controller_name == "products" %>
     <%= render 'shared/logged_searchbar' %>
-    <%= render 'shared/flashes' %>
-    <% else %>
+    <% elsif  controller_name == "products"%>
     <%= render 'shared/products_navbar' %>
     <% end %>
+    <%= render 'shared/flashes' %>
     <div class="container">
       <div class="row">
 

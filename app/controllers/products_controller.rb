@@ -6,7 +6,13 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     if params[:query].present?
-      @products =  policy_scope(Product).where("name ILIKE ?", "%#{params[:query]}%")
+      sql_query = " \
+        products.name ILIKE :query \
+        OR products.description ILIKE :query \
+      "
+      @products = policy_scope(Product).where(sql_query, query: "%#{params[:query]}%")
+
+      # @products =  policy_scope(Product).where("name ILIKE ?", "%#{params[:query]}%")
     else
       @products =  policy_scope(Product).order(created_at: :desc)
     end
