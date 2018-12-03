@@ -3,7 +3,7 @@ ruby '2.4.4'
 
 gem 'bootsnap', require: false
 gem 'devise'
-gem 'jbuilder', '~> 2.0'
+#gem 'jbuilder', '~> 2.0'
 gem 'pg', '~> 0.21'
 gem 'puma'
 gem 'rails', '5.2.1'
@@ -18,6 +18,9 @@ gem 'uglifier'
 gem 'webpacker'
 gem 'better_errors'
 gem 'binding_of_caller'
+gem 'dotenv-rails', groups: [:development, :test]
+gem 'cloudinary', '~> 1.9.1'
+gem 'carrierwave', '~> 1.2'
 group :development do
   gem 'web-console', '>= 3.3.0'
 end

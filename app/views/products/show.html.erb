@@ -1,19 +1,82 @@
- <div class="container product">
- <h3> PRODUCT DETAILS: </h3>
-   <div class="col-xs-12 col-sm-6" >
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-4">
 
-    <img class="product_pic" src=<%= @product.thumb %> />
+          <div id="imageCarousel" class="carousel slide" data-ride="carousel">
+            <% cpt_img = 0 %>
+            <ol class="carousel-indicators">
+              <% @productimages.each do |images| %>
+                <% if cpt_img == 0 %>
+                  <li data-target="#imageCarousel" data-slide-to="0" class="active">></li>
+                <% else %>
+                  <li data-target="#imageCarousel" data-slide-to=<%= cpt_img %>></li>
+                <% end %>
+              <% end %>
+            </ol>
+            <div class="carousel-inner">
+              <% @productimagefirst.each do |pi| %>
+                <div class="item active">
+                  <%= cl_image_tag pi.photo, height: 400, width: 400, crop: :fill %>
+                </div>
+              <% end %>
+              <% cpt_img = 1 %>
+              <% @productimages.each do |pi| %>
+                <% if cpt_img > 1 %>
+                  <div class="item">
+                    <%= cl_image_tag pi.photo, height: 400, width: 400, crop: :fill %>
+                  </div>
+                <% end %>
+                <% cpt_img += 1 %>
+              <% end %>
+            </div>
+            <% if cpt_img > 1 %>
+           <!-- Left and right controls -->
+              <a class="left carousel-control" href="#imageCarousel" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="right carousel-control" href="#imageCarousel" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+                <span class="sr-only">Next</span>
+              </a>
+            <% end %>
+          </div>
+
     </div>
-   <div class="col-xs-12 col-sm-6">
+
+    <div class="col-xs-12 col-sm-4">
+      <div class="form group">
         <h2>Product Name :  <%= @product.name %></h2>
         <P>Description : <%= @product.description %></P>
         <P>Category : <i><%= @product.producttype.name %></i></P>
         <h3> Store </h3>
         <p> <%= @product.user.username %></p>
         <br/>
-        <br/>
-       <a href="<%= buyproduct_path(@product) %>" <button type="button" class="btn btn-success">Buy now</button></a>
-        <button type="button" class="btn btn-secondary">Get -10 % if you buy in (50min)</button>
+        <div class="col-xs-6">
+        <div class="form-group">
+          <%= form_tag buyproduct_path(@product) do %>
+            <%= submit_tag 'Buy now', class: 'btn btn-success' %>
+          <% end %>
+        </div>
+          <%= form_tag buyproduct_path(@product) do %>
+            <%= submit_tag "Get -10 '%' if you buy in (50min)", class: 'btn btn-secondary' %>
+          <% end %>
+        </div>
+      </div>
     </div>
- </div>
+
+    <div class="col-xs-12 col-sm-4">
+      <div class="card">
+        <%= render 'productimages/form', product: @product, productimage: @productimage %>
+      </div>
+    </div>
+
+
+  </div>
+
+</div>
+
+<%= render 'productimages/index', product: @product %>
+
+
 

@@ -1,24 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Alt:</strong>
-  <%= @productimage.alt %>
-</p>
-
-<p>
-  <strong>Src:</strong>
-  <%= @productimage.src %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @productimage.user %>
-</p>
-
-<p>
-  <strong>Product:</strong>
-  <%= @productimage.product %>
-</p>
-
-<%= link_to 'Edit', edit_productimage_path(@productimage) %> |
-<%= link_to 'Back', productimages_path %>
+<%= simple_form_for [@product, @productimage] do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+  <div class="form-inputs">
+    <%= f.input :alt %>
+    <%= f.input :src %>
+  </div>
+  <%= link_to 'Edit', edit_product_productimage_path(@productimage) %> |
+  <%= link_to 'Back', product_productimages_path %>
+<% end %>
+<%= cl_image_tag @productimage.photo, height: 300, width: 400, crop: :fill %>
