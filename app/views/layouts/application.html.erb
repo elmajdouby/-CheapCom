@@ -10,12 +10,13 @@
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
   <body>
-
     <%= render 'shared/navbar' %>
-    <%= render 'shared/flashes' %>
-    <% if !current_user %>
+    <% if current_user && controller_name == "products" %>
+    <%= render 'shared/logged_searchbar' %>
+    <% elsif  controller_name == "products"%>
     <%= render 'shared/products_navbar' %>
     <% end %>
+    <%= render 'shared/flashes' %>
     <div class="container">
       <div class="row">
 
@@ -23,6 +24,7 @@
 
       </div>
     </div>
+    <%= render 'shared/footer' %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
   </body>

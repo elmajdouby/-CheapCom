@@ -1,13 +1,137 @@
-<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img class="d-block w-100" src=".../800x400?auto=yes&bg=777&fg=555&text=First slide" alt="First slide">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src=".../800x400?auto=yes&bg=666&fg=444&text=Second slide" alt="Second slide">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src=".../800x400?auto=yes&bg=555&fg=333&text=Third slide" alt="Third slide">
-    </div>
-  </div>
+
+
+<!-- Flickity HTML init -->
+<div class="gallery js-flickity"  data-flickity='{ "autoPlay": true }' >
+  <div class="gallery-cell" style="background-image: url('https://source.unsplash.com/collection/190727/1600x900');"></div>
+  <div class="gallery-cell" style="background-image: url('https://source.unsplash.com/collection/190727/1600x900');"></div>
+  <div class="gallery-cell" style="background-image: url('https://source.unsplash.com/collection/190727/1600x900');"></div>
+  <div class="gallery-cell" style="background-image: url('https://source.unsplash.com/collection/190727/1600x900');"></div>
+  <div class="gallery-cell" style="background-image: url('https://source.unsplash.com/collection/190727/1600x900');"></div>
 </div>
+
+<!-- Flickity HTML init -->
+<div class="carousel" data-flickity='{ "groupCells": true , "autoPlay": true}'>
+  <div class="carousel-cell"></div>
+  <div class="carousel-cell"></div>
+  <div class="carousel-cell"></div>
+  <div class="carousel-cell"></div>
+  <div class="carousel-cell"></div>
+  <div class="carousel-cell"></div>
+  <div class="carousel-cell"></div>
+  <div class="carousel-cell"></div>
+  <div class="carousel-cell"></div>
+  <div class="carousel-cell"></div>
+  <div class="carousel-cell"></div>
+</div>
+
+<h1> Welcome <span class="mail-user"> <%= current_user.email %> </span>  </h1>
+
+<div class="container">
+
+
+
+    <div class="col-xs-12 col-md-6">
+       <div class="img-settings" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://source.unsplash.com/user/erondu/1600x900');">
+            <h2> Add Product</h2>
+            <a class="card-link" href="../products/new" ></a>
+        </div>
+
+
+<style>
+* { box-sizing: border-box; }
+
+body { font-family: sans-serif; }
+
+.carousel {
+  background: #EEE;
+}
+
+.carousel-cell {
+  width: 28%;
+  height: 200px;
+  margin-right: 10px;
+  background: #8C8;
+  border-radius: 5px;
+  counter-increment: carousel-cell;
+}
+
+.carousel-cell.is-selected {
+  background: #ED2;
+}
+
+/* cell number */
+.carousel-cell:before {
+  display: block;
+  text-align: center;
+  content: counter(carousel-cell);
+  line-height: 200px;
+  font-size: 80px;
+  color: white;
+}
+
+
+  /* external css: flickity.css */
+
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body { font-family: sans-serif; }
+
+.gallery {
+  background: #EEE;
+}
+
+.gallery-cell {
+  width: 100%;
+  height: 500px;
+  margin-right: 10px;
+  background: #8C8;
+  counter-increment: gallery-cell;
+}
+
+/* cell number */
+.gallery-cell:before {
+  display: block;
+  text-align: center;
+  content: counter(gallery-cell);
+  line-height: 200px;
+  font-size: 80px;
+  color: white;
+}
+</style>
+
+<!-- CSS -->
+<link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+<!-- JavaScript -->
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+
+    </div>
+
+    <div class="col-xs-12 col-md-6">
+        <div class="img-settings" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://source.unsplash.com/weekly?water');">
+          <h2> Add Product Type</h2>
+          <a class="card-link" href="../producttypes/new" ></a>
+        </div>
+
+    </div>
+
+
+    <div class="col-xs-12 col-md-6">
+      <div class="img-settings" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://source.unsplash.com/1600x900/?nature,water');">
+            <h2> Profile Settings</h2>
+      </div>
+
+    </div>
+
+    <div class="col-xs-12 col-md-6">
+        <div class="img-settings" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://source.unsplash.com/WLUHO9A_xik/1600x900');">
+          <h2> Sales</h2>
+        </div>
+
+    </div>
+
+</div>
+
+

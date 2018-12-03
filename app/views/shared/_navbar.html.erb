@@ -1,16 +1,18 @@
 <div class="navbar-wagon">
   <!-- Logo -->
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
-    <%= image_tag "logo.png", height: 50 %>
+    <%= image_tag "logo.png", height: 80  %>
   <% end %>
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 
     <% if user_signed_in? %>
-
+      <% if current_user.role == "admin" %>
+        <%= link_to "Grant Roles",users_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <% end %>
       <!-- Links when logged in -->
-      <%= link_to "Chart", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "Dashboard", dashboard_path(@home), class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "notifications", "#", class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "Messages", "#", class: "navbar-wagon-item navbar-wagon-link" %>
 

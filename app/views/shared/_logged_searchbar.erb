@@ -1,10 +1,9 @@
 <div class="container-full">
-  <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://source.unsplash.com/1600x900/?buy');">
-    <div class="banner-content">
-       <h1>Making the market smarter</h1>
-       <h2>Enjoy our products</h2>
-       <br/>
-        <div class="col-xs-12 col-sm-12">
+
+  <div class="logged_banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://source.unsplash.com/1600x900/?buy');">
+
+        <div class="col-xs-11 col-sm-9 col-md-7">
+        <div class="holder"></div>
           <%= form_tag products_path, method: :get do %>
              <div class="input-group ">
                 <%= text_field_tag :query,
@@ -20,6 +19,7 @@
               </div>
           <% end %>
         </div>
-    </div>
+
   </div>
+
 </div>

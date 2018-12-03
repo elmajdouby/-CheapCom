@@ -1,12 +1,23 @@
 class ProductsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index]
+  skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :set_product, only: [:show, :edit, :update, :destroy, :buy]
   after_action :set_authorize, only: [:show, :new, :create, :edit, :update, :destroy, :buy]
   # GET /products
   # GET /products.json
   def index
 
-    @products =  policy_scope(Product).order(created_at: :desc)
+    if params[:query].present?
+      sql_query = " \
+        products.name ILIKE :query \
+        OR products.description ILIKE :query \
+      "
+      @products = policy_scope(Product).where(sql_query, query: "%#{params[:query]}%")
+
+      # @products =  policy_scope(Product).where("name ILIKE ?", "%#{params[:query]}%")
+    else
+      @products =  policy_scope(Product).order(created_at: :desc)
+    end
+
   end
 
   # GET /products/1
