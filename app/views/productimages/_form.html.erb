@@ -1,16 +1,22 @@
 
-<%= simple_form_for(@productimage) do |f| %>
+<%= simple_form_for([product, productimage]) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-  <div class="form-inputs">
-    <%= f.input :alt %>
-    <%= f.input :src %>
-    <%= f.association :user %>
-    <%= f.association :product %>
+  <div class="form-group">
+
+    <%= f.input :alt, label: 'Name :', error: 'name is mandatory, please specify one',input_html: { class: 'form-control' }  %>
+    <%= f.input :src, label: 'Source :', input_html: { class: 'form-control' } %>
+    <%= f.input :photo, input_html: { class: 'form-control'} %>
+    <%= f.input :photo_cache, as: :hidden, input_html: { class: 'form-control'} %>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
+  <div>
+    <%= form_tag productimage_path(f) do %>
+      <%= submit_tag 'Add', class: 'btn btn-primary' %>
+    <% end %>
   </div>
+
+
+
 <% end %>

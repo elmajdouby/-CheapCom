@@ -5,12 +5,18 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
+
     @products =  policy_scope(Product).order(created_at: :desc)
   end
 
   # GET /products/1
   # GET /products/1.json
   def show
+    @productimagefirst = Productimage.where("product_id = ?", params[:id]).limit(1)
+    @product = Product.find(params[:id])
+    @productimage = Productimage.new
+    @productimages = Productimage.where("product_id = ?", params[:id])
+
   end
 
   # GET /products/new
@@ -30,7 +36,7 @@ class ProductsController < ApplicationController
   # POST /products.json
   def create
     @product = Product.new(product_params)
-
+    @product.user = current_user
     respond_to do |format|
       if @product.save
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
