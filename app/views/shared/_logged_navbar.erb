@@ -1,4 +1,4 @@
-<div class="container navbar-wagon">
+<div class="container navbar-wagon-clear">
   <div class="row ">
     <div class="col-xs-3 col-sm-2 col-md-2 navbar-logo ">
       <%= link_to root_path, class: "navbar-wagon-brand" do %>
@@ -6,7 +6,7 @@
       <% end %>
     </div>
     <div  class="col-xs-7 col-sm-7 col-md-6 navbar-items ">
-      <form id="search_nav" action="/products" class="search_input navbar-search-show" accept-charset="UTF-8" method="get">
+      <form id="search_nav_logged" action="/products" class="search_input " accept-charset="UTF-8" method="get">
            <div class="input-group stylish-input-group ">
             <input type="text" class="form-control"  placeholder="Type your product : Samsung,Iphone,..." >
             <span class="input-group-addon">
@@ -16,7 +16,7 @@
             </span>
           </div>
       </form>
-      <div type="button" id=btn-location class="navbar-btn-location set-location navbar-search-show">
+      <div type="button" id=btn-location class="navbar-btn-location set-location ">
          <span class="glyphicon glyphicon-map-marker icon-lg"></span>
       </div>
 

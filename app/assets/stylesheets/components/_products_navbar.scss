@@ -17,7 +17,7 @@
   text-align: center;
   margin-left: 0px;
   margin-right: 0px;
-  height: 25vh;
+  height: 45vh;
   width:100%;
   /* if you have a 70px navbar => height: calc(100vh - 70px); */
   background-size: cover !important;
@@ -45,4 +45,14 @@
 }
 .holder{
   widows: 70%;
+}
+
+.title1{
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+.title2{
+  font-size: 20px;
+  margin-top: 20px;
+  margin-bottom: 40px;
 }
