@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
 
-  
+
   resources :products
 
-  get '/products/buy/:id', to: 'products#buy', as: 'buyproduct'
+  # get '/products/buy/:id', to: 'products#buy', as: 'buyproduct'
 
   devise_for :users
   root to: 'products#index'

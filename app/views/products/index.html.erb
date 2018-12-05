@@ -1,6 +1,17 @@
-<h2> Futured items </h2>
-<div class="products">
-  <div class="container">
+
+<!-- Flickity HTML init -->
+ <div class="row">
+    <div class="carousel" data-flickity='{ "groupCells": true , "autoPlay": true}'>
+       <% @products.each do |product| %>
+            <div class="carousel-cell" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= product.thumb %>);" >
+            </div>
+
+       <% end %>
+  </div>
+</div>
+
+
+  <div class="row">
       <% @products.each do |product| %>
         <div class="col-xs-12 col-sm-4 col-md-3">
           <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= product.thumb %>);">
@@ -16,5 +27,7 @@
 
       <% end %>
   </div>
-</div>
+
+
+
 
