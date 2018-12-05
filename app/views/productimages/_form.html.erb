@@ -1,14 +1,14 @@
-
-<%= simple_form_for([product, productimage]) do |f| %>
+<%= simple_form_for([product, productimage],remote: true) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-group">
 
     <%= f.input :alt, label: 'Name :', error: 'name is mandatory, please specify one',input_html: { class: 'form-control' }  %>
-    <%= f.input :src, label: 'Source :', input_html: { class: 'form-control' } %>
+    <div class="form-inline">
     <%= f.input :photo, input_html: { class: 'form-control'} %>
     <%= f.input :photo_cache, as: :hidden, input_html: { class: 'form-control'} %>
+
   </div>
 
   <div>
@@ -16,7 +16,6 @@
       <%= submit_tag 'Add', class: 'btn btn-primary' %>
     <% end %>
   </div>
-
-
-
 <% end %>
+
+
