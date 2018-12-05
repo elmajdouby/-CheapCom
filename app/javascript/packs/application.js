@@ -1,4 +1,6 @@
 import "bootstrap";
+import "jquery";
+import "../password.js"
 import Drift from 'drift-zoom';
 
 new Drift(document.querySelector('.image-zoom'), {
@@ -8,3 +10,4 @@ new Drift(document.querySelector('.image-zoom'), {
   containInline: true,
   hoverBoundingBox: true
 });
+
