@@ -8,6 +8,8 @@
 @import "caroussel";
 @import "dashboard";
 @import "login";
+@import "products";
+@import "categories_navbar";
 
 
 body{
@@ -15,5 +17,5 @@ body{
 }
 
 .main-container{
-  margin-top: 70px;
+  // margin-top: 70px;
 }
