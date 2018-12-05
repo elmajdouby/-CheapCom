@@ -14,14 +14,14 @@
   <div class="row">
       <% @products.each do |product| %>
         <div class="col-xs-12 col-sm-4 col-md-3">
-          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= product.thumb %>);">
+          <div class="card image-zoom" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= product.thumb %>);" data-zoom="<%= product.thumb %>">
             <div class="card-category"><%= product.producttype.name %></div>
             <div class="card-description">
               <h2 class="productname"><%= product.name %></h2>
             </div>
             <img class="card-user avatar" src=<%= product.user.avatar %>>
              <%= image_tag "shopping-cart.png",:class => "addtochart", height: 40 %>
-            <a class="card-link" href="<%= product_path(product) %>"></a>
+            <a class="card-link image-zoom" href="<%= product_path(product) %>"></a>
         </div>
       </div>
 
