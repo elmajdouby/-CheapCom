@@ -15,30 +15,20 @@
 
     <% if current_user && controller_name == "products" %>
     <%= render 'shared/logged_navbar' %>
+    <%= render 'shared/categories_navbar' %>
     <% elsif  controller_name == "products"%>
     <%= render 'shared/navbar' %>
+    <%= render 'shared/categories_navbar' %>
     <%= render 'shared/products_navbar' %>
     <% end %>
     <%= render 'shared/flashes' %>
-    <div class="container main-container">
-      <div class="row">
-
-      <%= yield %>
-
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12">
+          <%= yield %>
       </div>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
     </div>
+  </div>
     <%= render 'shared/footer' %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
