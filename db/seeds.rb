@@ -5,3 +5,19 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+
+
+puts "creating products"
+
+
+Product.create(name: "Samsung", thumb: "URL", description:  "Description", producttype: "electronics" )
+
+
+
+# Producttype.create(name: "Electronics", description: "TV, Phone,...", thumb: "electronics.png")
+
+
+
+puts "finished!"
