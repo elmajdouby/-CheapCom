@@ -10,14 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_30_105403) do
+ActiveRecord::Schema.define(version: 2018_12_05_172421) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "productimages", force: :cascade do |t|
-    t.text "alt"
-    t.text "src"
+    t.string "alt"
     t.bigint "user_id"
     t.bigint "product_id"
     t.datetime "created_at", null: false
