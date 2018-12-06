@@ -31,16 +31,19 @@ console.log(search_nav);
 function show_categories_navbar(){
 
   const categories_nav = document.getElementById('categories-navbar');
-  categories_nav.classList.remove('categories-navbar-hide');
-  console.log(categories_nav);
-   // if (categories_nav ) {
-   //  window.addEventListener('scroll', () => {
-   //    if (window.scrollY > window.innerHeight /2) {
-   //      categories_nav.classList.remove('categories-navbar-show');
-   //    } else {
-   //      categories_nav.classList.add('categories-navbar-show');
-   //    }
-   //  });
-  // }
+  //categories_nav.classList.remove('categories-navbar-hide');
+  console.log(categories_nav.style);
+   if (categories_nav ) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > window.innerHeight /2) {
+        categories_nav.classList.remove('categories-navbar-hide');
+      } else {
+        categories_nav.classList.add('categories-navbar-hide');
+      }
+    });
+  }
 }
 
+ $(function() {
+    alert("ok");
+  });
