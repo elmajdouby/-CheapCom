@@ -1,0 +1,6 @@
+document.querySelector("[data-card-id='<%= @productimage.id %>']").remove();
+function refreshForm(innerHTML,elmentID) {
+  const newProductimageForm = document.getElementById(elmentID);
+  newProductimageForm.innerHTML = innerHTML;
+}
+refreshForm('<%= j render "productimages/carousel" %>','newcarousel');

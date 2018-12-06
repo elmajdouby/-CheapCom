@@ -31,7 +31,6 @@ console.log(search_nav);
 function show_categories_navbar(){
 
   const categories_nav = document.getElementById('categories-navbar');
-<<<<<<< HEAD
   //categories_nav.classList.remove('categories-navbar-hide');
   console.log(categories_nav.style);
    if (categories_nav ) {
@@ -42,18 +41,6 @@ function show_categories_navbar(){
         categories_nav.classList.add('categories-navbar-hide');
       }
     });
-=======
-  categories_nav.classList.remove('categories-navbar-hide');
-  console.log(categories_nav);
-  if (categories_nav ) {
-   window.addEventListener('scroll', () => {
-     if (window.scrollY > window.innerHeight /2) {
-       categories_nav.classList.remove('categories-navbar-hide');
-     } else {
-       categories_nav.classList.add('categories-navbar-hide');
-     }
-   });
->>>>>>> ef650710771a794ae63aa7edf108610f1fadccaa
   }
 }
 

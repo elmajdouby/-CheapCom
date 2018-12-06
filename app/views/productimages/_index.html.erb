@@ -1,20 +1,7 @@
-
-  <div clas="row">
-    <% @productimages.each do |pi| %>
-      <div class="col-xs-12 col-sm-4">
-        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path pi.photo, height: 300, width: 400, crop: :fill %>')">
-          <div class="card-description">
-            <h2 class="productname"><%= pi.alt %></h2>
-          </div>
-          <img class="card-user avatar" src="https://kitt.lewagon.com/placeholder/users/atmosfeer">
-          <%= image_tag "shopping-cart.png",:class => "addtochart", height: 40 %>
-
-          <p>
-            <%= link_to '<i class="fas fa-trash"></i>'.html_safe , productimage_path(pi), method: :delete, data: { confirm: 'Are you sure?' } %>
-          </p>
-        </div>
-      </div>
-    <% end %>
+<div clas="row" id="cards">
+  <% @productimages.each do |pi| %>
+  <%= render 'productimages/show', productimage: pi %>
+  <% end %>
 </div>
 
 

@@ -1,0 +1,17 @@
+function addProductimage(productimageHTML,elmentID) {
+  const productimages = document.getElementById(elmentID);
+  productimages.insertAdjacentHTML('beforeend', productimageHTML);
+}
+function refreshForm(innerHTML,elmentID) {
+  const newProductimageForm = document.getElementById(elmentID);
+  newProductimageForm.innerHTML = innerHTML;
+}
+
+<% if @pt.errors.any? %>
+  refreshForm('<%= j render "productimages/form", product: @product, productimage: @productimage %>');
+<% else %>
+  addProductimage('<%= j render "productimages/show", productimage: @pt %>','cards');
+  refreshForm('<%= j render "productimages/form", product: @product, productimage: Productimage.new %>','new_image');
+  refreshForm('<%= j render "productimages/carousel", productimage: @pt %>','newcarousel');
+ <% end %>
+
