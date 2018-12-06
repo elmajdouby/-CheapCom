@@ -1,47 +1,8 @@
+<br/><br/><br/><br/><br/><br/><br/><br/><br/>
 <div class="container">
   <div class="row">
-    <div class="col-xs-12 col-sm-4">
-
-          <div id="imageCarousel" class="carousel slide" data-ride="carousel">
-            <% cpt_img = 0 %>
-            <ol class="carousel-indicators">
-              <% @productimages.each do |images| %>
-                <% if cpt_img == 0 %>
-                  <li data-target="#imageCarousel" data-slide-to="0" class="active">></li>
-                <% else %>
-                  <li data-target="#imageCarousel" data-slide-to=<%= cpt_img %>></li>
-                <% end %>
-              <% end %>
-            </ol>
-            <div class="carousel-inner">
-              <% @productimagefirst.each do |pi| %>
-                <div class="item active">
-                  <%= cl_image_tag pi.photo, height: 400, width: 400, crop: :fill %>
-                </div>
-              <% end %>
-              <% cpt_img = 1 %>
-              <% @productimages.each do |pi| %>
-                <% if cpt_img > 1 %>
-                  <div class="item">
-                    <%= cl_image_tag pi.photo, height: 400, width: 400, crop: :fill %>
-                  </div>
-                <% end %>
-                <% cpt_img += 1 %>
-              <% end %>
-            </div>
-            <% if cpt_img > 1 %>
-           <!-- Left and right controls -->
-              <a class="left carousel-control" href="#imageCarousel" data-slide="prev">
-                <span class="glyphicon glyphicon-chevron-left"></span>
-                <span class="sr-only">Previous</span>
-              </a>
-              <a class="right carousel-control" href="#imageCarousel" data-slide="next">
-                <span class="glyphicon glyphicon-chevron-right"></span>
-                <span class="sr-only">Next</span>
-              </a>
-            <% end %>
-          </div>
-
+    <div class="col-xs-12 col-sm-4" id="newcarousel">
+        <%= render 'productimages/carousel', productimage: @productimage, product: @product %>
     </div>
 
     <div class="col-xs-12 col-sm-4">
@@ -64,19 +25,18 @@
         </div>
       </div>
     </div>
+    <div class="col-xs-12 col-sm-4" id="new_image">
 
-    <div class="col-xs-12 col-sm-4">
-      <div class="card ">
         <%= render 'productimages/form', product: @product, productimage: @productimage %>
-      </div>
+
     </div>
-
-
   </div>
 
 </div>
 
 <%= render 'productimages/index', product: @product %>
+
+
 
 
 

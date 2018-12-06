@@ -1,0 +1,27 @@
+<div id="imageCarousel" class="carousel slide" data-ride="carousel">
+  <% @cpt_img = 0 %>
+  <div class="carousel-inner" id="carousel-inner">
+    <% Product.find(@product.id).productimage.each_with_index do |pi,i| %>
+      <div class="item <%= i == 0 ? "active" : "" %>" data-img-id="<%= pi.id %>">
+        <%= cl_image_tag Productimage.find(pi.id).photo, height: 400, width: 400, crop: :fill %>
+      </div>
+      <% @cpt_img = i %>
+    <% end %>
+    <% if @cpt_img > 0 %>
+      <ol class="carousel-indicators" id="carousel-indicators">
+        <% Product.find(@product.id).productimage.each_with_index do |image,i| %>
+          <li data-target="#imageCarousel" data-imgind-id="<%= image.id %>" data-slide-to="0"class="<%= i == 0 ? "active" : "" %>">></li>
+        <% end %>
+      </ol>
+
+      <a class="left carousel-control" href="#imageCarousel" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#imageCarousel" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    <% end %>
+  </div>
+</div>
