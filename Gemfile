@@ -16,6 +16,8 @@ gem 'sassc-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
+gem 'money-rails'
+gem 'stripe'
 gem 'better_errors'
 gem 'binding_of_caller'
 gem 'dotenv-rails', groups: [:development, :test]
