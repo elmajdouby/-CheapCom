@@ -2,6 +2,9 @@ import "bootstrap";
 import "jquery";
 import "../password.js"
 
+import "../zoom.js"
+
+
 import "../upload_image.js"
 //import Drift from 'drift-zoom';
 
