@@ -2,7 +2,7 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-4" id="newcarousel">
-        <%= render 'productimages/carousel', productimage: @productimage, product: @product %>
+        <%= render 'productimages/carousel', productimage: @productimages, product: @product %>
     </div>
 
     <div class="col-xs-12 col-sm-4">
@@ -25,16 +25,26 @@
         </div>
       </div>
     </div>
-    <div class="col-xs-12 col-sm-4" id="new_image">
-
-        <%= render 'productimages/form', product: @product, productimage: @productimage %>
-
-    </div>
+    <% if current_user  %>
+      <% if current_user == @product.user || current_user.role=="admin" %>
+        <div class="col-xs-12 col-sm-4" id="new_image">
+            <%=  render 'productimages/form', product: @product, productimage: @productimage %>
+        </div>
+      <% end %>
+    <% end %>
   </div>
 
 </div>
 
-<%= render 'productimages/index', product: @product %>
+ <% if current_user  %>
+  <% if current_user == @product.user || current_user.role=="admin" %>
+    <div class="col-xs-12 col-sm-4" id="new_image">
+       <%=  render 'productimages/index', product: @product %>
+    </div>
+  <% end %>
+<% end %>
+
+
 
 
 
