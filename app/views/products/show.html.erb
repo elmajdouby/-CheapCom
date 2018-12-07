@@ -9,22 +9,31 @@
       <div class="form group">
         <h2>Product Name :  <%= @product.name %></h2>
         <P>Description : <%= @product.description %></P>
+        <p>Price: <%= humanized_money_with_symbol(@product.price) %></p>
         <P>Category : <i><%= @product.producttype.name %></i></P>
         <h3> Store </h3>
         <p> <%= @product.user.username %></p>
         <br/>
         <div class="col-xs-6">
         <div class="form-group">
-          <%= form_tag buyproduct_path(@product) do %>
+          <%= form_tag orders_path do %>
+            <%= hidden_field_tag 'product_id', @product.id %>
             <%= submit_tag 'Buy now', class: 'btn btn-success' %>
           <% end %>
+<!--           <%= form_tag buyproduct_path(@product) do %>
+            <%= submit_tag 'Buy now', class: 'btn btn-success' %>
+          <% end %> -->
+
         </div>
-          <%= form_tag buyproduct_path(@product) do %>
+<!--           <%= form_tag buyproduct_path(@product) do %>
             <%= submit_tag "Get -10 '%' if you buy in (50min)", class: 'btn btn-secondary' %>
-          <% end %>
+          <% end %> -->
         </div>
       </div>
     </div>
+
+
+
     <div class="col-xs-12 col-sm-4" id="new_image">
 
         <%= render 'productimages/form', product: @product, productimage: @productimage %>

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-
+  get 'payments/new'
   resources :products
 
 
@@ -20,6 +20,14 @@ Rails.application.routes.draw do
 
   get '/users',   to: 'users#index'
   get "/dashboard" => "pages#home"
+
+  #Creating routes for orders
+
+  resources :orders, only: [:show, :create] do
+    resources :payments, only: [:new, :create]
+  end
+
+
 
 
 end
