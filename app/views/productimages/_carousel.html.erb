@@ -3,7 +3,7 @@
   <div class="carousel-inner" id="carousel-inner">
     <% Product.find(@product.id).productimage.each_with_index do |pi,i| %>
       <div class="item <%= i == 0 ? "active" : "" %>" data-img-id="<%= pi.id %>">
-        <%= cl_image_tag Productimage.find(pi.id).photo, height: 400, width: 400, crop: :fill %>
+        <%= cl_image_tag Productimage.find(pi.id).photo, height: 400, width: 400, crop: :fill, class: "image-zoom", data: {zoom: "#{Productimage.find(pi.id).photo}"} %>
       </div>
       <% @cpt_img = i %>
     <% end %>
