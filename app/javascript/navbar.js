@@ -1,5 +1,4 @@
- window.onscroll = function() {scrollNav()};
- document.getElementById("show_categories_navbar").onclick = function(){show_categories_navbar()};
+window.onscroll = function() {scrollNav()};
 
 function scrollNav(){
 const navbar = document.querySelector('.navbar-wagon');
@@ -28,19 +27,16 @@ console.log(search_nav);
   }
 }
 
-function show_categories_navbar(){
-
-  const categories_nav = document.getElementById('categories-navbar');
-  categories_nav.classList.remove('categories-navbar-hide');
-  console.log(categories_nav);
-   // if (categories_nav ) {
-   //  window.addEventListener('scroll', () => {
-   //    if (window.scrollY > window.innerHeight /2) {
-   //      categories_nav.classList.remove('categories-navbar-show');
-   //    } else {
-   //      categories_nav.classList.add('categories-navbar-show');
-   //    }
-   //  });
-  // }
-}
-
+$(document).ready(function(){
+  $("#show_categories_navbar").click(function(){
+    $("#categories-navbar").toggleClass("categories-navbar-hide");
+      window.addEventListener('scroll', () => {
+        console.log("scrollY " +  window.scrollY + " inherit : " +  window.scrollY);
+        if (window.scrollY > window.innerHeight /2) {
+          $("#categories-navbar").removeClass('categories-navbar-hide');
+        } else {
+          $("#categories-navbar").addClass('categories-navbar-hide');
+        }
+      });
+  });
+});

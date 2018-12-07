@@ -1,0 +1,5 @@
+<div clas="row" id="cards">
+  <% @products.each do |pi| %>
+  <%= render 'products/show', products: pi %>
+  <% end %>
+</div>
