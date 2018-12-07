@@ -1,7 +1,7 @@
 <div id="imageCarousel" class="carousel slide" data-ride="carousel">
   <% @cpt_img = 0 %>
   <div class="carousel-inner" id="carousel-inner">
-    <% Product.find(@product.id).productimage.each_with_index do |pi,i| %>
+    <% Product.find(@product.id).productimages.each_with_index do |pi,i| %>
       <div class="item <%= i == 0 ? "active" : "" %>" data-img-id="<%= pi.id %>">
         <%= cl_image_tag Productimage.find(pi.id).photo, height: 400, width: 400, crop: :fill %>
       </div>
@@ -9,7 +9,7 @@
     <% end %>
     <% if @cpt_img > 0 %>
       <ol class="carousel-indicators" id="carousel-indicators">
-        <% Product.find(@product.id).productimage.each_with_index do |image,i| %>
+        <% Product.find(@product.id).productimages.each_with_index do |image,i| %>
           <li data-target="#imageCarousel" data-imgind-id="<%= image.id %>" data-slide-to="0"class="<%= i == 0 ? "active" : "" %>">></li>
         <% end %>
       </ol>

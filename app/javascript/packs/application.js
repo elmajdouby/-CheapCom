@@ -1,8 +1,13 @@
 import "bootstrap";
 import "jquery";
 import "../password.js"
+
 import "../upload_image.js"
 //import Drift from 'drift-zoom';
+
+//import "../navbar.js"
+//import "../uploadprodpics.js"
+
 
 // new Drift(document.querySelector('.image-zoom'), {
 //   inlinePane: 900,
