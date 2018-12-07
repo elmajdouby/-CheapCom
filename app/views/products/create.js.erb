@@ -1,0 +1,18 @@
+function refreshForm(innerHTML,elmentID) {
+  const newProductForm = document.getElementById(elmentID);
+  newProductForm.innerHTML = innerHTML;
+}
+
+
+<% if @product.errors.any? %>
+  refreshForm('<%= j render "products/show", product: @product %>', 'product-info');
+
+<% else %>
+  refreshForm('<%= j render "products/show", product: @product %>','product-info');
+
+  $("#product_name").val("");
+  $("#product_description").val("");
+  $("#product_producttype_id").val("");
+ <% end %>
+
+

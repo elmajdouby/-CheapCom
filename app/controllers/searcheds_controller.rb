@@ -1,2 +1,3 @@
 class SearchedsController < ApplicationController
+
 end

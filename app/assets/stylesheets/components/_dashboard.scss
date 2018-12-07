@@ -2,12 +2,23 @@
   height:175px;
   background-size: cover;
   margin-bottom: 20px;
-
-
+  color: white;
+  text-align: center;
+  vertical-align: center;
+  display: flex;
+  justify-content:center;
+  align-items:center;
+  border-radius: 10px 10px 10px 10px;
+  -webkit-box-shadow: 10px 10px 9px -5px rgba(102,102,102,0.49);
+-moz-box-shadow: 10px 10px 9px -5px rgba(102,102,102,0.49);
+box-shadow: 10px 10px 9px -5px rgba(102,102,102,0.49);
 }
 .mail-user{
   color : #488b8f;
   font-size: 35px;
+}
+.welcome-message{
+  margin-bottom: 40px;
 }
 
 

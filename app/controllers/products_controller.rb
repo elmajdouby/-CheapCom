@@ -50,11 +50,17 @@ class ProductsController < ApplicationController
     @product.user = current_user
     respond_to do |format|
       if @product.save
-        format.html { redirect_to @product, notice: 'Product was successfully created.' }
-        format.json { render :show, status: :created, location: @product }
+        if params[:product_images] != nil
+          params[:product_images]["photo"].each do |pic|
+            @product.productimages.create!(photo: pic, user: current_user)
+          end
+        end
+          format.html { redirect_to @product, notice: 'Product was successfully created.' }
+          format.js
+
       else
         format.html { render :new }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end

@@ -1,5 +1,6 @@
+
  window.onscroll = function() {scrollNav()};
- document.getElementById("show_categories_navbar").onclick = function(){show_categories_navbar()};
+ //document.getElementById("show_categories_navbar").onclick = function(){show_categories_navbar()};
 
 function scrollNav(){
 const navbar = document.querySelector('.navbar-wagon');
@@ -43,4 +44,5 @@ function show_categories_navbar(){
    });
   }
 }
+
 
