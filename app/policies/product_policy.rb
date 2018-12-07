@@ -14,7 +14,7 @@ class ProductPolicy < ApplicationPolicy
   end
 
   def update?
-    record.user == user
+    record.user == user || user.role == 'admin'
   end
 
   def edit?
@@ -22,7 +22,7 @@ class ProductPolicy < ApplicationPolicy
   end
 
   def destroy?
-    record.user == user
+    update?
   end
 
   def buy?
