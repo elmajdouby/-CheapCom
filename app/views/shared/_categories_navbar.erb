@@ -4,75 +4,15 @@
     <div class="row">
        <div class="carousel carousel-nav"
         data-flickity='{ "asNavFor": ".carousel-main", "contain": true, "pageDots": false }'>
-        <div class="carousel-cell">
-          <i class="fas fa-tshirt"></i>
-          <div class="category-item" style="text-align: center;"><p>Cellphones</p></div>
-        </div>
+        <% Producttype.all.each do |cat| %>
+          <div class="carousel-cell">
+            <%= cat.thumb.html_safe %>
+            <div class="category-item" style="text-align: center;"><p><%= cat.name %></p></div>
+          </div>
+        <% end %>
 
-        <div class="carousel-cell">
-          <i class="fas fa-mobile-alt"></i>
-          <div class="category-item" style="text-align: center;"><p>Cellphones</p></div>
-        </div>
-        <div class="carousel-cell">
-          <i class="fas fa-headphones"></i>
-          <div class="category-item" style="text-align: center;"><p>Electronics</p></div>
-        </div>
-        <div class="carousel-cell">
-           <i class="fas fa-laptop"></i>
-          <div class="category-item" style="text-align: center;"><p>Computer</p></div>
-        </div>
-        <div class="carousel-cell">
-          <i class="fas fa-shopping-bag"></i>
-          <div class="category-item" style="text-align: center;"><p>Bages</p></div>
-        </div>
-        <div class="carousel-cell">
-          <i class="fas fa-shoe-prints"></i>
-          <div class="category-item" style="text-align: center;"><p>Shoes</p></div>
-        </div>
-        <div class="carousel-cell">
-           <i class="fas fa-futbol"></i>
-          <div class="category-item" style="text-align: center;"><p>Sport</p></div>
-        </div>
-        <div class="carousel-cell">
-          <i class="far fa-clock"></i>
-          <div class="category-item" style="text-align: center;"><p>Watches</p></div>
-        </div>
-        <div class="carousel-cell">
-          <i class="fas fa-home"></i>
-          <div class="category-item" style="text-align: center;"><p>Home & Garden</p></div>
-        </div>
-        <div class="carousel-cell">
-          <i class="fas fa-car"></i>
-          <div class="category-item" style="text-align: center;"><p>Auto & Accessories</p></div>
-        </div>
-        <div class="carousel-cell">
-          <i class="fas fa-child"></i>
-          <div class="category-item" style="text-align: center;"><p>kids & Baby</p>
-        </div>
-        <div class="carousel-cell"></div>
-        <div class="carousel-cell"></div>
-        <div class="carousel-cell"></div>
-        <div class="carousel-cell"></div>
-        <div class="carousel-cell"></div>
-        <div class="carousel-cell"></div>
-        <div class="carousel-cell"></div>
-        <div class="carousel-cell"></div>
-        <div class="carousel-cell"></div>
-        <div class="carousel-cell"></div>
-        <div class="carousel-cell"></div>
-        <div class="carousel-cell"></div>
-        <div class="carousel-cell"></div>
       </div>
       </div>
     </div>
   </div>
 </div>
-</div>
-
-
-
-
-
-<style>
-
-</style>

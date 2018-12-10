@@ -6,9 +6,10 @@
       <% end %>
     </div>
     <div  class="col-xs-7 col-sm-7 col-md-6 navbar-items ">
-      <form id="search_nav-logged" action="/products" class="search_input " accept-charset="UTF-8" method="get">
+
+      <form id="search_nav-logged" action=<%= productsearch_path %> class="search_input " accept-charset="UTF-8" method="get">
            <div class="input-group stylish-input-group ">
-            <input type="text" class="form-control"  placeholder="Type your product : Samsung,Iphone,..." >
+            <input type="text" name="query" class="form-control"  placeholder="Type your product : Samsung,Iphone,..." >
             <span class="input-group-addon">
                 <button type="button" id="show_categories_navbar">
                     <span class="glyphicon glyphicon-th"></span>

@@ -6,9 +6,9 @@
       <% end %>
     </div>
     <div  class="col-xs-7 col-sm-7 col-md-6 navbar-items ">
-      <form id="search_nav" action="/products" class="search_input navbar-search-show" accept-charset="UTF-8" method="get">
+      <form id="search_nav" action=<%= productsearch_path %> class="search_input navbar-search-show" accept-charset="UTF-8" method="get">
            <div class="input-group stylish-input-group ">
-            <input type="text" class="form-control"  placeholder="Type your product : Samsung,Iphone,..." >
+            <input type="text" name="query" class="form-control"  placeholder="Type your product : Samsung,Iphone,..." >
             <span class="input-group-addon">
                 <button type="button" id="show_categories_navbar">
                     <span class="glyphicon glyphicon-th"></span>
@@ -67,14 +67,7 @@
                 </ul>
               </div>
             </div>
-          <% else %>
-            <!-- Login link (when logged out) -->
-
-            <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "btn btn-primary" %>
-          <% end %>
-        </div>
-
-    <!-- Dropdown list appearing on mobile only -->
+            <!-- Dropdown list appearing on mobile only -->
         <div class="navbar-wagon-item hidden-md hidden-lg">
           <div class="dropdown">
             <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
@@ -85,6 +78,14 @@
             </ul>
           </div>
         </div>
+          <% else %>
+            <!-- Login link (when logged out) -->
+
+            <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "btn btn-primary" %>
+          <% end %>
+        </div>
+
+
     </div>
   </div>
 
