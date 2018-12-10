@@ -4,7 +4,6 @@ import "../password.js"
 import "../navbar.js"
 import "../uploadprodpics.js"
 import "../producttype.js"
-import "../zoom.js"
 import "../upload_image.js"
 
 
