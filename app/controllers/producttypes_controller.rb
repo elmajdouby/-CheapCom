@@ -18,8 +18,15 @@ class ProducttypesController < ApplicationController
     rest = Producttype.new(producttype_params)
     rest.user = current_user
     authorize rest
-    rest.save
-    redirect_to producttypes_path(rest)
+    respond_to do |format|
+      if rest.save
+        format.html { redirect_to producttypes_path(rest)}
+        format.js
+      else
+        format.html { render :new }
+        format.js
+      end
+    end
   end
 
   def edit
@@ -33,7 +40,7 @@ class ProducttypesController < ApplicationController
 
   def destroy
     @producttype.destroy
-    redirect_to producttypes_path
+    redirect_to new_producttype_path
   end
 
   private

@@ -1,9 +1,6 @@
-<%= form_for @producttype do |f| %>
-<%= f.label :name, "ENTER YOUR NAME" %>
-<%= f.text_field :name %>
-<%= f.label :description, "description"%>
-<%= f.text_field :description %>
-<%= f.label :thumb, "image"%>
-<%= f.text_field :thumb %>
-<%= f.submit %>
-<% end %>
+<h1>Editing Producttype</h1>
+
+<%= render 'form', producttype: @producttype %>
+
+<%= link_to 'Show', @producttype %> |
+<%= link_to 'Back', new_producttype_path %>
