@@ -56,7 +56,7 @@ class ProductimagesController < ApplicationController
     def productimage_params
       params.require(:productimage).permit(:alt, :src, :user_id, :product_id, :photo)
     end
-def set_authorize
+    def set_authorize
       authorize @productimage
     end
 end
