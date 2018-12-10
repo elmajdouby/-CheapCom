@@ -1,8 +1,12 @@
-<h3>Product types :</h3>
 <div class="container">
   <div class="row">
-
-  <% @producttypes.each do |producttype| %>
+      <div id="addproducttype" class="col-xs-4 col-sm-2 col-md-2 producttype-item" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">
+        <div>
+          <i class="fas fa-plus producttype-icon"></i>
+          <p>Add new </p>
+        </div>
+      </div>
+  <% producttypes.each do |producttype| %>
       <div class="col-xs-4 col-sm-2 col-md-2 producttype-item" >
         <div >
           <p><%= link_to producttype.thumb.html_safe , producttype%><p>

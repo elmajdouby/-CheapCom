@@ -1,9 +1,21 @@
-<%= form_for @producttype do |f| %>
-<%= f.label :name, "ENTER YOUR NAME" %>
-<%= f.text_field :name %>
-<%= f.label :description, "description"%>
-<%= f.text_field :description %>
-<%= f.label :thumb, "image"%>
-<%= f.text_field :thumb %>
-<%= f.submit %>
-<% end %>
+<h3>New Producttype</h3>
+
+<div id="producttype-info">
+    <%= render 'producttypes/index', producttypes: policy_scope(Producttype).order(created_at: :desc) %>
+</div>
+<!-- The popup thanks -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add New Product Type</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= render 'form', producttype: @producttype %>
+      </div>
+    </div>
+  </div>
+</div>
