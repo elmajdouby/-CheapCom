@@ -28,4 +28,8 @@ class ProductPolicy < ApplicationPolicy
   def buy?
     true
   end
+
+  def search?
+    true
+  end
 end

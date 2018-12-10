@@ -1,13 +1,10 @@
 Rails.application.routes.draw do
 
 
+
+
   resources :producttypes
   resources :products
-
-
-  # get '/products/buy/:id', to: 'products#buy', as: 'buyproduct'
-
-
   devise_for :users
   root to: 'products#index'
   resources :products do
@@ -21,5 +18,6 @@ Rails.application.routes.draw do
   get '/users',   to: 'users#index'
   get "/dashboard" => "pages#home"
 
+  get '/product/search/' , to: 'products#search', as: 'productsearch'
 
 end

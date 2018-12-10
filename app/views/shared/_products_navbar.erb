@@ -5,7 +5,7 @@
       <div id="title2" class="title2">Enjoy our products</div>
        <br/>
         <div class="col-xs-12 col-sm-12">
-          <%= form_tag products_path, method: :get do %>
+          <%= form_tag productsearch_path, method: :get do %>
              <div class="input-group ">
                 <%= text_field_tag :query,
                     params[:query],
@@ -26,30 +26,13 @@
     <div class="row">
        <div class="carousel carousel-nav"
         data-flickity='{ "asNavFor": ".carousel-main", "contain": true, "pageDots": false }'>
-        <div class="carousel-cell"></div>
-        <div class="carousel-cell"></div>
-        <div class="carousel-cell"></div>
-        <div class="carousel-cell"></div>
-        <div class="carousel-cell"></div>
-        <div class="carousel-cell"></div>
-        <div class="carousel-cell"></div>
-        <div class="carousel-cell"></div>
-        <div class="carousel-cell"></div>
-        <div class="carousel-cell"></div>
-        <div class="carousel-cell"></div>
-        <div class="carousel-cell"></div>
-        <div class="carousel-cell"></div>
-        <div class="carousel-cell"></div>
-        <div class="carousel-cell"></div>
-        <div class="carousel-cell"></div>
-        <div class="carousel-cell"></div>
-        <div class="carousel-cell"></div>
-        <div class="carousel-cell"></div>
-        <div class="carousel-cell"></div>
-        <div class="carousel-cell"></div>
-        <div class="carousel-cell"></div>
-        <div class="carousel-cell"></div>
-        <div class="carousel-cell"></div>
+        <% Producttype.all.each do |cat| %>
+          <div class="carousel-cell">
+            <%= cat.thumb.html_safe %>
+            <div class="category-item" style="text-align: center;"><p><%= cat.name %></p></div>
+          </div>
+        <% end %>
+
       </div>
       </div>
     </div>

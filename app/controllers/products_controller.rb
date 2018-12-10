@@ -1,11 +1,10 @@
 class ProductsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show]
+  skip_before_action :authenticate_user!, only: [:index, :show, :search]
   before_action :set_product, only: [:show, :edit, :update, :destroy, :buy]
   after_action :set_authorize, only: [:show, :new, :create, :edit, :update, :destroy, :buy]
   # GET /products
   # GET /products.json
   def index
-
     if params[:query].present?
       sql_query = " \
         products.name ILIKE :query \
@@ -63,6 +62,20 @@ class ProductsController < ApplicationController
         format.js
       end
     end
+  end
+
+  # search methode
+  def search
+    if params[:query].present?
+      sql_query = " \
+        products.name ILIKE :query \
+        OR products.description ILIKE :query \
+      "
+      @products = policy_scope(Product).where(sql_query, query: "%#{params[:query]}%")
+    else
+      @products =  policy_scope(Product).order(created_at: :desc)
+    end
+    authorize @products
   end
 
   # PATCH/PUT /products/1
