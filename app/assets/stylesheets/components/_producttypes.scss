@@ -1,0 +1,32 @@
+.producttype-item{
+  padding: 0px;
+  div{
+    text-align: center;
+    background-color: green;
+    margin: 4px;
+    height: 100px;
+    padding:5px;
+    border-radius: 10px;
+    color:white;
+    p{
+      margin: 4px;
+    }
+    a{
+      color: white;
+      text-decoration: none;
+    }
+    i{
+      font-size: 60px;
+    }
+  }
+}
+
+
+
+.drop-item{
+  font-size: 15px !important;
+}
+
+.edit-item{
+  font-size: 15px !important;
+}

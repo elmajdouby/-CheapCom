@@ -1,5 +1,24 @@
-<div class="container">
-    <h1 class="name"><%= @producttype.name %></h1>
-    <h3 class="description"><%= @producttype.description %></h3>
-    <%= link_to "Back to list",producttypes_path%>
-</div>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @producttype.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @producttype.description %>
+</p>
+
+<p>
+  <strong>Thumb:</strong>
+  <%= @producttype.thumb %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @producttype.user %>
+</p>
+
+<%= link_to 'Edit', edit_producttype_path(@producttype) %> |
+<%= link_to 'Back', producttypes_path %>
