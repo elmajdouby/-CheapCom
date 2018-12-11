@@ -3,7 +3,7 @@
     <div class="card-description">
       <h2 class="productname"><%= productimage.alt %></h2>
     </div>
-    <img class="card-user avatar" src="https://kitt.lewagon.com/placeholder/users/atmosfeer">
+    <img class="card-user avatar" src=<%= cl_image_tag User.find(productimage.user_id).avatar %>
     <%= image_tag "shopping-cart.png",:class => "addtochart", height: 40 %>
 
     <p>

@@ -6,6 +6,7 @@ import "../uploadprodpics.js";
 import "../producttype.js";
 import "../upload_image.js";
 
+
 //import "../navbar.js"
 //import "../uploadprodpics.js"
 
