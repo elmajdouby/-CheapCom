@@ -1,7 +1,7 @@
 .card {
   height: 175px;
   text-shadow: 0 1px 3px rgba(0,0,0,0.6);
-  background-size: cover !important;
+
   background-position: center;
   color: white;
   position: relative;
@@ -11,6 +11,10 @@
   -webkit-box-shadow: 3px 2px 17px -1px rgba(133,133,133,0.76);
   -moz-box-shadow: 3px 2px 17px -1px rgba(133,133,133,0.76);
   box-shadow: 3px 2px 17px -1px rgba(133,133,133,0.76);
+
+   background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 .card-user {
   position: absolute;

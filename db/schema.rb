@@ -29,9 +29,6 @@ ActiveRecord::Schema.define(version: 2018_12_11_131153) do
 
   create_table "productimages", force: :cascade do |t|
     t.string "alt"
-
-    t.text "src"
-
     t.bigint "user_id"
     t.bigint "product_id"
     t.datetime "created_at", null: false
