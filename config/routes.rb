@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :producttypes
   resources :products
 
-  devise_for :users
+  devise_for :users, controllers: { registrations: 'users/registrations' }
   root to: 'products#index'
   resources :products do
     resources :productimages, only: [:create]
