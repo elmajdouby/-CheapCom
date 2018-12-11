@@ -1,6 +1,21 @@
 .h2-title{
-  margin-top: 0px;
+  margin-top: 50px;
+  font-family: 'Roboto Condensed', sans-serif;
+  text-align: center;
+  color:#f7931e;
 }
+.row-content{
+   margin-top: -10px;
+  margin-bottom: 30px;
+}
+
+.h2-subtitle{
+  margin-top: 0px;
+  margin-bottom: 40px;
+  font-family: 'Raleway', sans-serif;
+  text-align: center;
+}
+
 .all-articles{
   padding-left: 20px;
   padding-right: 20px;
@@ -17,7 +32,6 @@
     font-size: 20px;
     font-size: 30px;
   }
-
 }
 
 .product_new_form{
@@ -76,4 +90,8 @@
 
 .img-prev{
   border-radius: 10px 10px 10px 10px;
+}
+
+.product-img{
+  background-size: 100%;
 }

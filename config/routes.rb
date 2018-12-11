@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   get '/users',   to: 'users#index'
   get "/dashboard" => "pages#home"
-
+  get "/testing" => "pages#test"
 
   #Creating routes for orders
 
