@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :producttypes
   resources :products
 
-  devise_for :users
+  devise_for :users, controllers: { registrations: 'users/registrations' }
   root to: 'products#index'
   resources :products do
     resources :productimages, only: [:create]
@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   get '/users',   to: 'users#index'
   get "/dashboard" => "pages#home"
-
+  get "/testing" => "pages#test"
 
   #Creating routes for orders
 

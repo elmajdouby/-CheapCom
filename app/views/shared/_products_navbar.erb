@@ -1,27 +1,36 @@
 <div class="container-full">
-  <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://source.unsplash.com/1600x900/?buy');">
-    <div class="banner-content">
-      <div id="title1" class="title1">Making the market smarter</div>
-      <div id="title2" class="title2">Enjoy our products</div>
-       <br/>
-        <div class="col-xs-12 col-sm-12">
-          <%= form_tag productsearch_path, method: :get do %>
-             <div class="input-group ">
-                <%= text_field_tag :query,
-                    params[:query],
-                    class: "form-control input-lg",
-                    placeholder: "Type your product : Samsung,Iphone,..."
-                  %>
-                <div class="input-group-btn">
-                  <button class="btn btn-primary btn-lg" type="submit">
-                    <span class="glyphicon glyphicon-search"></span>
-                  </button>
-                </div>
-              </div>
-          <% end %>
-        </div>
+  <!-- Navbar caroussel -->
+    <div class="carousel carousel-main" data-flickity='{"autoPlay": true, "pageDots": false}'>
+      <div class="carousel-cells" style="background-image: url('http://7uptheme.com/wordpress/molte-store/wp-content/uploads/2018/12/02_home-1.jpg');background-size: cover !important;"></div>
+
+      <div class="carousel-cells" style="background-image: url('http://7uptheme.com/wordpress/molte-store/wp-content/uploads/2018/12/01_home-1.jpg');background-size: cover !important;"></div>
+
+      <div class="carousel-cells" style="background-image: url('http://7uptheme.com/wordpress/molte-store/wp-content/uploads/2018/12/03_home-1.jpg');background-size: cover !important;"></div>
     </div>
+   <!-- End navbar raroussel -->
+
+<div class="search-product">
+  <div class="elements-orga">
+    <h2 class="home-title-1">Enjoy the best choping options</h2>
+    <h3 class="home-title-2">we're the best who knows your choice ...</h3>
   </div>
+    <%= form_tag productsearch_path, method: :get, class: "search-form" do %>
+     <div class="input-group search-box">
+        <%= text_field_tag :query,
+            params[:query],
+            class: "form-control input-lg search-input",
+            placeholder: "Type your product : Samsung,Iphone,..."
+          %>
+        <div class="input-group-btn">
+          <button class="btn btn-primary btn-lg search-btn" type="submit">
+            <span class="glyphicon glyphicon-search"></span>
+          </button>
+        </div>
+      </div>
+    <% end %>
+
+</div>
+
   <div class="col-xs-12 col-sm-12 col-md-12">
     <div class="row">
        <div class="carousel carousel-nav"

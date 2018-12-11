@@ -7,6 +7,7 @@
 # #   Character.create(name: 'Luke', movie: movies.first)
 
 puts 'cleaning database'
+
 Searched.destroy_all
 Sale.destroy_all
 Order.destroy_all
@@ -14,6 +15,9 @@ Productimage.destroy_all
 Product.destroy_all
 Producttype.destroy_all
 User.destroy_all
+
+
+
 
 
 puts 'creating users'
@@ -45,6 +49,7 @@ puts 'Product 1 created'
   pimage2.remote_photo_url = 'db/seed_images/phone/iphone8.jpeg'
   pimage2.save!
 puts 'Product 2 created'
+
 
 p3 = Product.create!(name: "Jacket", description:  "2018's Best Ski Jackets", producttype: cat1, price_cents: 15000, user: user1 )
 
