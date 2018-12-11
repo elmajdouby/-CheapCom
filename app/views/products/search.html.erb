@@ -6,7 +6,16 @@
     </div>
   </div>
 </div>
+
+
+<h2 class="h2-title">items ...</h2>
+
+<!-- <div class="products">
+
+
 <div class="products">
+
+
   <div class="container">
       <% @products.each do |product| %>
         <div class="col-xs-12 col-sm-4 col-md-4">
@@ -23,5 +32,36 @@
 
       <% end %>
   </div>
+</div> -->
+
+<div class="products-card">
+  <div class="container-fluid">
+    <% @products.each do |product| %>
+      <div class="col-xs-12 col-sm-4 col-md-4">
+        <div class="card-containt">
+          <% if product.productimages[0].nil? || Productimage.find(product.productimages[0].id).photo.url.nil? %>
+            <% default_image = image_path("default_product.png") %>
+          <% else %>
+            <% default_image = cl_image_path Productimage.find(product.productimages[0].id).photo, height: 300, width: 400, crop: :fill %>
+          <% end %>
+
+          <div class="images">
+            <img src= <%= default_image %> >
+          </div>
+          <div class="desc-card" >
+            <p> <%= product.producttype.name %> </p>
+            <h1> <%= product.name %> </h1>
+            <h2> <%= humanized_money_with_symbol(product.price) %> </h2>
+            <p class="desc"> <%=  product.description %> </p>
+            <div class="card-button">
+               <a class="buy" href="<%= product_path(product) %>">Buy Now</a>
+               <a class="like" href="#"><i class="fas fa-heart"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
+
 
