@@ -4,7 +4,7 @@ function scrollNav(){
 const navbar = document.querySelector('.navbar-wagon');
 const search_nav = document.getElementById('search_nav');
 const location_nav = document.getElementById('btn-location');
-console.log(search_nav);
+
   if (navbar) {
     window.addEventListener('scroll', () => {
       if (window.scrollY > window.innerHeight /2) {
@@ -31,7 +31,7 @@ $(document).ready(function(){
   $("#show_categories_navbar").click(function(){
     $("#categories-navbar").toggleClass("categories-navbar-hide");
       window.addEventListener('scroll', () => {
-        console.log("scrollY " +  window.scrollY + " inherit : " +  window.scrollY);
+
         if (window.scrollY > window.innerHeight /2) {
           $("#categories-navbar").removeClass('categories-navbar-hide');
         } else {

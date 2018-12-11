@@ -22,6 +22,16 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
+    @user = Product.find(params[:id]).user
+    unless @user.latitude.nil? && @user.longitude.nil?
+      @markers = [@user].map do |cordinate|
+        {
+          lng: cordinate.longitude,
+          lat: cordinate.latitude,
+          infoWindow: { content: render_to_string(partial: "/shared/info_windows", locals: { cordinate: cordinate }) }
+        }
+      end
+    end
     @productimagefirst = Productimage.where("product_id = ?", params[:id]).limit(1)
     @product = Product.find(params[:id])
     @productimage = Productimage.new

@@ -1,16 +1,21 @@
-<h2 class="h2-title">searched items ...</h2>
-<!-- Flickity HTML init -->
- <div class="row">
-    <div class="carousel" data-flickity='{ "groupCells": true , "autoPlay": true}'>
-       <% @products.each do |product| %>
-            <div class="carousel-cell" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path Productimage.find(product.productimages[0].id).photo , height: 300, width: 400, crop: :fill  %>);" >
-            </div>
-        <% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-8">
+
+
     </div>
+  </div>
 </div>
+
+
 <h2 class="h2-title">items ...</h2>
 
 <!-- <div class="products">
+
+
+<div class="products">
+
+
   <div class="container">
       <% @products.each do |product| %>
         <div class="col-xs-12 col-sm-4 col-md-4">

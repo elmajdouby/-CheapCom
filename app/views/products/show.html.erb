@@ -1,61 +1,51 @@
-<br/><br/><br/><br/><br/><br/><br/><br/><br/>
-<div class="container">
+  <% owner_test = !current_user.nil? && (current_user == @product.user || current_user.role=="admin") %>
+<br/><br/><br/>
+<div class="">
   <div class="row">
-    <div class="col-xs-12 col-sm-4" id="newcarousel">
-        <%= render 'productimages/carousel', productimage: @productimages, product: @product %>
-    </div>
-
-    <div class="col-xs-12 col-sm-8">
-      <div class="form group">
-        <h2>Product Name :  <%= @product.name %></h2>
-        <P>Description : <%= @product.description %></P>
-        <p>Price: <%= humanized_money_with_symbol(@product.price) %></p>
-        <P>Category : <i><%= @product.producttype.name %></i></P>
-        <h3> Store </h3>
-        <p> <%= @product.user.username %></p>
-        <br/>
+    <div class="col-xs-8">
+      <div class="row">
+        <div class="col-xs-6" id="newcarousel">
+          <%= render 'productimages/carousel', productimage: @productimages, product: @product %>
+        </div>
         <div class="col-xs-6">
-        <div class="form-group">
-          <%= form_tag orders_path do %>
-            <%= hidden_field_tag 'product_id', @product.id %>
-            <%= submit_tag 'Buy now', class: 'btn btn-success' %>
+          <div class="form group">
+            <h2>Product Name :  <%= @product.name %></h2>
+            <P>Description : <%= @product.description %></P>
+            <p>Price: <%= humanized_money_with_symbol(@product.price) %></p>
+            <P>Category : <i><%= @product.producttype.name %></i></P>
+            <h3> Store </h3>
+            <p> <%= @product.user.username %></p>
+            <br/>
+            <div class="col-xs-6">
+              <div class="form-group">
+                <%= form_tag orders_path do %>
+                  <%= hidden_field_tag 'product_id', @product.id %>
+                  <%= submit_tag 'Buy now', class: 'btn btn-success' %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+          <% if owner_test %>
+            <div class="col-xs-12" id="new_image">
+              <%=  render 'productimages/form', product: @product, productimage: @productimage %>
+            </div>
           <% end %>
-<!--           <%= form_tag buyproduct_path(@product) do %>
-            <%= submit_tag 'Buy now', class: 'btn btn-success' %>
-          <% end %> -->
-
-        </div>
-<!--           <%= form_tag buyproduct_path(@product) do %>
-            <%= submit_tag "Get -10 '%' if you buy in (50min)", class: 'btn btn-secondary' %>
-          <% end %> -->
-        </div>
       </div>
     </div>
+    <div class="col-xs-4" >
+        <%= render "shared/map", markers: @markers %>
+    </div>
 
-
-
-
-    <div class="col-xs-12 col-sm-4" id="new_image">
-
-    <% if current_user  %>
-      <% if current_user == @product.user || current_user.role=="admin" %>
-        <div class="col-xs-12 col-sm-4" id="new_image">
-            <%=  render 'productimages/form', product: @product, productimage: @productimage %>
-        </div>
-      <% end %>
-    <% end %>
   </div>
-
-
 </div>
 
- <% if current_user  %>
-  <% if current_user == @product.user || current_user.role=="admin" %>
-    <div class="col-xs-12 col-sm-4" id="new_image">
+  <% if owner_test %>
+    <div class="col-xs-12" id="new_image">
        <%=  render 'productimages/index', product: @product %>
     </div>
   <% end %>
-<% end %>
+
 
 
 
