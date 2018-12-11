@@ -8,4 +8,12 @@ $brand-warning:   $orange;
 
 .page-footer{
   background-color: $base-base;
+   clear: both;
+    position: relative;
+    height: 40px;
+    margin-top: -40px;
+    min-height: 100%;
+    grid-template-columns: 100%;
+    grid-template-rows: auto
 }
+
