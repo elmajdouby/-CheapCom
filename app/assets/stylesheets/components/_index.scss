@@ -13,12 +13,12 @@
 @import "producttypes";
 @import "payment";
 @import "map";
-@import "card-test";
+@import url('https://fonts.googleapis.com/css?family=Lato|Raleway|Roboto+Condensed');
 
-
-
-
-@import url('https://fonts.googleapis.com/css?family=Raleway|Roboto+Condensed');
-
+// font-family: 'Lato', sans-serif;
 // font-family: 'Roboto Condensed', sans-serif;
 // font-family: 'Raleway', sans-serif;
+
+.main-container{
+  margin-top: 70px;
+}

@@ -1,26 +1,21 @@
-<div class="container-fluid">
+
 <!-- Best options for you -->
-  <div class="row ">
+  <div class="row">
     <h2 class="h2-title">All the articles ...</h2>
     <p class="h2-subtitle">Get the best options tailored for you ... </p>
       <% @products.each do |product| %>
-        <div class="col-xs-12 col-sm-4 col-md-4 products-card">
+        <div class="col-xs-12 col-sm-3 col-md-3 products-card">
           <div class="card-containt">
-
             <% if product.productimages[0].nil? || Productimage.find(product.productimages[0].id).photo.url.nil? %>
               <% default_image = image_path("default_product.png") %>
             <% else %>
               <% default_image = cl_image_path Productimage.find(product.productimages[0].id).photo, height: 300, width: 400 %>
             <% end %>
-
-
-            <div class="product-img" style="background-image: url(<%= default_image %>">
-
+           <div class="product-img" style="background-image: url(<%= default_image %>">
             </div>
-
             <div class="desc-card" >
-              <p> <%= product.producttype.name %> </p>
               <h1> <%= product.name %> </h1>
+              <p> <%= product.producttype.name %> </p>
               <h2> <%= humanized_money_with_symbol(product.price) %> </h2>
               <p class="desc"> <%=  product.description %> </p>
               <div class="card-button">
@@ -28,12 +23,10 @@
                  <a class="like" href="#"><i class="fas fa-heart"></i></a>
               </div>
             </div>
-
           </div>
         </div>
       <% end %>
-
-     </div>
+  </div>
 
 <!-- the caroussel for futured products -->
    <div class="row">
@@ -78,5 +71,5 @@
         <% end %>
   </div>
 
-</div>
+
 
