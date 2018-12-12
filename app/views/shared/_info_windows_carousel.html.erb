@@ -1,4 +1,7 @@
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal<%= productmarker.id %>">
-  <%= productmarker.name %>
-</button>
+<% productmarker.each do |product| %>
+  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal<%= product.id %>">
+    <%= product.name %>
+  </button>
+<% end %>
+
 
