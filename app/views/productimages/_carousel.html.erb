@@ -1,4 +1,4 @@
-<div id="imageCarousel" class="carousel slide" data-ride="carousel">
+<div id="imageCarousel<%= product.id %>" class="carousel slide" data-ride="carousel">
   <% @cpt_img = 0 %>
   <div class="carousel-inner" id="carousel-inner">
     <% Product.find(product.id).productimages.each_with_index do |pi,i| %>
@@ -10,17 +10,17 @@
     <% if @cpt_img > 0 %>
       <ol class="carousel-indicators" id="carousel-indicators">
         <% Product.find(product.id).productimages.each_with_index do |image,i| %>
-          <li data-target="#imageCarousel" data-imgind-id="<%= image.id %>" data-slide-to="0"class="<%= i == 0 ? "active" : "" %>">></li>
+          <li data-target="#imageCarousel<%= product.id%>" data-imgind-id="<%= image.id %>" data-slide-to="0"class="<%= i == 0 ? "active" : "" %>">></li>
         <% end %>
       </ol>
 
-      <a class="left carousel-control" href="#imageCarousel" data-slide="prev">
+      <a class="left carousel-control" href="#imageCarousel<%= product.id%>" data-slide="prev">
         <span class="glyphicon glyphicon-chevron-left"></span>
-        <span class="sr-only">Previous</span>
+        <span class="sr-only"></span>
       </a>
-      <a class="right carousel-control" href="#imageCarousel" data-slide="next">
+      <a class="right carousel-control" href="#imageCarousel<%= product.id %>" data-slide="next">
         <span class="glyphicon glyphicon-chevron-right"></span>
-        <span class="sr-only">Next</span>
+        <span class="sr-only"></span>
       </a>
     <% end %>
   </div>
