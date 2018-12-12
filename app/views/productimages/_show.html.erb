@@ -3,8 +3,6 @@
     <div class="card-description">
       <h2 class="productname"><%= productimage.alt %></h2>
     </div>
-    <img class="card-user avatar" src=<%= cl_image_tag User.find(productimage.user_id).avatar %>
-    <%= image_tag "shopping-cart.png",:class => "addtochart", height: 40 %>
 
     <p>
       <%= link_to '<i class="fas fa-trash"></i>'.html_safe , productimage_path(productimage), method: :delete, data: { confirm: 'Are you sure?' }, remote: true %>

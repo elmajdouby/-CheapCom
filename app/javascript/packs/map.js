@@ -2,7 +2,7 @@ import 'mapbox-gl/dist/mapbox-gl.css'
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css'
 import mapboxgl from 'mapbox-gl/dist/mapbox-gl.js';
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
-function locate(){
+// function locate(){
   const mapElement = document.getElementById('map');
 
   if (mapElement) { // only build a map if there's a div#map to inject into
@@ -30,16 +30,16 @@ function locate(){
       markers.forEach((marker) => {
         bounds.extend([marker.lng, marker.lat]);
       });
-      map.fitBounds(bounds, { duration: 0, padding: 75 })
+      map.fitBounds(bounds, { duration: 5000, padding: 75 })
     }
       map.addControl(new MapboxGeocoder({
       accessToken: mapboxgl.accessToken
     }));
   }
-}
-locate();
+// }
+// locate();
 const addressInput = document.getElementById('address');
-addressInput.addEventListener("change", locate);
+// addressInput.addEventListener("change", locate);
 
 if (addressInput) {
   const places = require('places.js');

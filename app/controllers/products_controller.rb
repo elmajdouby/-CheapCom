@@ -85,6 +85,14 @@ class ProductsController < ApplicationController
     else
       @products =  policy_scope(Product).order(created_at: :desc)
     end
+        @markers = @products.map do |product|
+          {
+
+            lng: product.user.longitude,
+            lat: product.user.latitude,
+            infoWindow: { content: render_to_string(partial: "/shared/info_windows_carousel", locals: { productmarker: product}) }
+          }
+        end
     authorize @products
   end
 
