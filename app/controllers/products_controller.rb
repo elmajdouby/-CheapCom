@@ -2,6 +2,7 @@ class ProductsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show, :search]
   before_action :set_product, only: [:show, :edit, :update, :destroy, :buy]
   after_action :set_authorize, only: [:show, :new, :create, :edit, :update, :destroy, :buy]
+  skip_after_action :verify_authorized, only: [:search]
   # GET /products
   # GET /products.json
   def index
@@ -82,18 +83,28 @@ class ProductsController < ApplicationController
         OR products.description ILIKE :query \
       "
       @products = policy_scope(Product).where(sql_query, query: "%#{params[:query]}%")
+      @search_query = params[:query]
     else
-      @products =  policy_scope(Product).order(created_at: :desc)
+      @products = policy_scope(Product).order(created_at: :desc)
     end
-        @markers = @products.map do |product|
-          {
 
-            lng: product.user.longitude,
-            lat: product.user.latitude,
-            infoWindow: { content: render_to_string(partial: "/shared/info_windows_carousel", locals: { productmarker: product}) }
-          }
-        end
-    authorize @products
+    if params[:distance].present?
+      close_users = User.near([current_user.latitude,current_user.longitude], params[:distance].to_i)
+      @products = @products.map {|product| product if close_users.include? product.user}.compact
+    end
+
+    logger.info("===> " + @products.to_json)
+
+    @markers = @products.group_by(&:user_id).map do |product|
+      {
+        lng: User.find(product[0]).longitude,
+        lat: User.find(product[0]).latitude,
+        infoWindow: {
+          content: render_to_string(partial: "/shared/info_windows_carousel",
+            locals: { productmarker: product[1]})
+        }
+      }
+    end
   end
 
   # PATCH/PUT /products/1
