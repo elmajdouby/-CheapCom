@@ -2,20 +2,13 @@
 <P class="prev-desc pics-label-input">Description : <%= product.description %></P>
 <p class="prevpics pics-label-input">Your product pics looks like bellow ... </p>
 <div class="row">
-<% product.productimages.each do |img| %>
-
-<div class="col-xs-12 col-sm-6 img-prev" data-card-id="<%= img.id %>">
-  <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path Productimage.find(img.id).photo , height: 300, width: 400, crop: :fill %>')">
-    <div class="card-description">
-      <h2 class="productname"><%= img.alt %></h2>
+  <% product.productimages.each do |img| %>
+    <div class="col-xs-12 col-sm-6 img-prev" data-card-id="<%= img.id %>">
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path Productimage.find(img.id).photo , height: 300, width: 400, crop: :fill %>')">
+        <div class="card-description">
+          <h2 class="productname"><%= img.alt %></h2>
+        </div>
+      </div>
     </div>
-    <img class="card-user avatar" src="https://kitt.lewagon.com/placeholder/users/atmosfeer">
-    <%= image_tag "shopping-cart.png",:class => "addtochart", height: 40 %>
-
-    <p>
-
-    </p>
-  </div>
-</div>
-<% end %>
+  <% end %>
 </div>

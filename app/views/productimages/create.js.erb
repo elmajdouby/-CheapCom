@@ -12,6 +12,6 @@ function refreshForm(innerHTML,elmentID) {
 <% else %>
   addProductimage('<%= j render "productimages/show", productimage: @pt %>','cards');
   refreshForm('<%= j render "productimages/form", product: @product, productimage: Productimage.new %>','new_image');
-  refreshForm('<%= j render "productimages/carousel", productimage: @pt %>','newcarousel');
+  refreshForm('<%= j render "productimages/carousel", productimage: @pt, product: @product %>','newcarousel');
  <% end %>
 
