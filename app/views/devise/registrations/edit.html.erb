@@ -37,11 +37,10 @@
             <% end %>
           </div>
           <div class="col-xs-12 col-md-6">
-
-            <%= f.input :role,
-                        required: true,
-                        autofocus: true ,
-                        input_html: { autocomplete: "role" }%>
+            <%= f.input :address,
+                    required: true,
+                    autofocus: true ,
+                    input_html: { autocomplete: "address", placeholder: "Enter your address" , id: "address" }%>
           </div>
         </div>
 
@@ -87,15 +86,7 @@
                         required: false,
                         input_html: { autocomplete: "new-password" } %>
           </div>
-          <div class="row">
-          <div class="col-xs-12">
-            <%= f.input :address,
-                    required: true,
-                    autofocus: true ,
-                    input_html: { autocomplete: "address", placeholder: "Enter your address" , id: "address" }%>
-          </div>
-        </div>
-        </div>
+
       </div>
       <div class="row">
         <div class="col-xs-7 col-sm-3 ">
