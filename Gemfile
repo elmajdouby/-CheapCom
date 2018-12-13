@@ -24,7 +24,14 @@ gem 'dotenv-rails', groups: [:development, :test]
 gem 'cloudinary', '~> 1.9.1'
 gem 'carrierwave', '~> 1.2'
 
+
+
+gem 'remotipart', github: 'mshibuya/remotipart'
+gem 'rails_admin', '>= 1.0.0.rc'
+
+
   gem 'listen', '~> 3.1.5'
+
 
 group :development do
   gem 'web-console', '>= 3.3.0'
