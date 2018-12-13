@@ -1,26 +1,32 @@
 
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-xs-12 col-sm-8">
 
 
-
-<div class="container">
-  <div class="row">
-<div class="col-xs-12 col-sm-8 col-md-8 products-search-show">
+  <div class="col-xs-12 col-sm-8 col-md-8 products-search-show">
   <!-- Search input  -->
-<% if user_signed_in? %>
-  <form  action=<%= productsearch_path %> class="search_input " accept-charset="UTF-8" method="get">
-    <div class="input-group stylish-input-group product-search-box">
-      <input type="text" name="distance" class="form-control" placeholder="Enter the distance to cover(KM)" >
-      <% unless @search_query.nil? %>
-        <input type="hidden" name="query" value="<%= @search_query %>" >
-      <% end %>
-    </div>
-  </form>
-<% end %>
+  <div class="col-xs-12 col-md-12 search-blok">
+    <% if user_signed_in? %>
+      <form  action=<%= productsearch_path %> class="search_inputs" accept-charset="UTF-8" method="get">
+        <div class="row">
+          <div class="col-xs-4 col-sm-4 col-md-4">
+            <h2 class="search-label">Distance range : (<span id="demo"></span>km)</h2>
+          </div>
+          <div class="col-xs-8 col-sm-8 col-md-8">
+            <div class="slidecontainer">
+                <input type="range" name="distance"  min="1" max="100" value="<%= @distance %>" class="slider" id="myRange">
+              <% unless @search_query.nil? %>
+              <input type="hidden" name="query" value="<%= @search_query %>" >
+              <% end %>
+            </div>
+          </div>
+
+        </div>
+        <input type="submit" id="distSubmit" class="btn btn-warning hidden">
+      </form>
+    <% end %>
+  </div>
 <!-- END Search input -->
-  <h2 class="h2-title">Searche articles ...</h2>
+  <h2 class="h2-title" style="text-align: left; ">Searched articles : </h2>
     <div class="row">
       <div class="products-card">
           <% @products.each do |product| %>
@@ -52,19 +58,8 @@
               </div>
           <% end %>
       </div>
-    </div>
-  </div>
 
-    <div class="col-xs-12 col-sm-4 col-md-4">
-      <%= render "shared/map", markers: @markers %>
-    </div>
-
-  </div>
-</div>
-</div></div>
-</div>
-
-
+<!-- it is here -->
 <% @products.each do |product| %>
   <div class="modal fade" id="modal<%= product.id %>" tabindex="-1" role="dialog" aria-labelledby="modal<%= product.id %>Label" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -82,5 +77,18 @@
     </div>
   </div>
 <% end %>
+<!-- it is here ### -->
+
+    </div>
+  </div>
+    <div class="col-xs-12 col-sm-4 col-md-4">
+      <%= render "shared/map", markers: @markers %>
+    </div>
+
+</div>
+
+
+
+
 
 
