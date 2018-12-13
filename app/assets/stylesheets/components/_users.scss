@@ -1,0 +1,53 @@
+
+.container-users{
+  padding-top: 20px;
+  padding-bottom: 200px;
+    .col-md-6 {
+        width: 40%;
+      }
+    .user-card{
+
+      background-color: $light-gray;
+      align-items: center;
+      justify-content: space-around;
+      border-radius: 25px;
+      .card-avatar{
+        margin-top: 15px;
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+      }
+      h1{
+        font-size: 25px;
+      }
+      p{
+        font-size: 0.8em;
+        letter-spacing: 1px;
+        margin-bottom: 6px;
+      }
+        a {
+          color: inherit;
+          text-decoration: none;
+          background: darken(#ffcab0, 10%);
+          padding: 4px;
+          display: inline-block;
+          outline: 0;
+          border: 0;
+          margin: 20px;
+          border-radius: 2px;
+          // text-transform: uppercase;
+          letter-spacing: 1px;
+          color: #F5F5F5;
+          font-family: 'Lato', sans-serif;
+          cursor: pointer;
+          &:hover {
+            background: #fb9a40;
+            transition: all .4s ease-in-out;
+          }
+        }
+      margin-top: 25px;
+      margin-bottom: 15px;
+    }
+}
+
+
