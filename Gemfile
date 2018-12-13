@@ -23,6 +23,16 @@ gem 'binding_of_caller'
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'cloudinary', '~> 1.9.1'
 gem 'carrierwave', '~> 1.2'
+
+
+
+gem 'remotipart', github: 'mshibuya/remotipart'
+gem 'rails_admin', '>= 1.0.0.rc'
+
+
+  gem 'listen', '~> 3.1.5'
+
+
 group :development do
   gem 'web-console', '>= 3.3.0'
 end
@@ -30,7 +40,6 @@ end
 group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
-  gem 'listen', '~> 3.0.5'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end

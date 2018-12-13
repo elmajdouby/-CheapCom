@@ -1,11 +1,17 @@
 <% @users = User.all %>
-<div class="container">
-  <% @users.each do |user| %>
-    <div class="col-xs-12 col-md-6">
-     <img  height="40" width="40" src=<%= user.avatar %> />
-      <%= user.username %><br/>
-      <%= user.email %><br/>
-      <%= user.role %><br/>
-    </div>
-  <% end %>
+<div class="container-users text-center">
+  <div class="row">
+    <% @users.each do |user| %>
+      <div class="col-xs-12 col-md-4">
+        <div class="user-card">
+          <img class="card-avatar" src=<%= user.avatar %> />
+          <h1><%= user.fistname.capitalize %> <%= user.lastname.capitalize %></h1>
+          <p><%= user.email %></p>
+          <p> <strong>User Role : </strong> <%= user.role %> </p> <br/>
+          <a href="#" class="show-profile"> Show Profile</a>
+          <a href="#" class="update-profile"> Update Role</a>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>

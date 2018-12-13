@@ -1,6 +1,6 @@
 <div class="container-full">
   <!-- Navbar caroussel -->
-    <div class="carousel carousel-main" data-flickity='{"autoPlay": true, "pageDots": false}'>
+    <div class="carousel carousel-main" data-flickity='{"autoPlay": true,"autoPlay": 10000, "pageDots": false}'>
       <div class="carousel-cells" style="background-image: url('http://7uptheme.com/wordpress/molte-store/wp-content/uploads/2018/12/02_home-1.jpg');background-size: cover !important;"></div>
 
       <div class="carousel-cells" style="background-image: url('http://7uptheme.com/wordpress/molte-store/wp-content/uploads/2018/12/01_home-1.jpg');background-size: cover !important;"></div>
@@ -37,7 +37,7 @@
         data-flickity='{ "asNavFor": ".carousel-main", "contain": true, "pageDots": false }'>
         <% Producttype.all.each do |cat| %>
           <div class="carousel-cell">
-            <%= cat.thumb.html_safe %>
+            <%= link_to cat.thumb.html_safe , producttype_products_path(cat) %>
             <div class="category-item" style="text-align: center;"><p><%= cat.name %></p></div>
           </div>
         <% end %>

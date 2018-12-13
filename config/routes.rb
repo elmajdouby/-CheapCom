@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
-  resources :producttypes
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+
   resources :products
 
   devise_for :users, controllers: { registrations: 'users/registrations' }
@@ -8,6 +9,11 @@ Rails.application.routes.draw do
   resources :products do
     resources :productimages, only: [:create]
   end
+
+  resources :producttypes do
+    resources :products, only: [:index]
+  end
+
   resources :productimages, only: [:destroy]
 
   get '/products/buy/:id', to: 'products#buy', as: 'buyproduct'
