@@ -77,6 +77,7 @@ class ProductsController < ApplicationController
 
   # search methode
   def search
+    @distance = 10
     if params[:query].present?
       sql_query = " \
         products.name ILIKE :query \
@@ -89,6 +90,7 @@ class ProductsController < ApplicationController
     end
 
     if params[:distance].present?
+      @distance = params[:distance].to_i
       close_users = User.near([current_user.latitude,current_user.longitude], params[:distance].to_i)
       @products = @products.map {|product| product if close_users.include? product.user}.compact
     end
