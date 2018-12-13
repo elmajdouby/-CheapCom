@@ -6,7 +6,7 @@
         data-flickity='{ "asNavFor": ".carousel-main", "contain": true, "pageDots": false }'>
         <% Producttype.all.each do |cat| %>
           <div class="carousel-cell">
-            <%= cat.thumb.html_safe %>
+            <%= link_to cat.thumb.html_safe , producttype_products_path(cat) %>
             <div class="category-item" style="text-align: center;"><p><%= cat.name %></p></div>
           </div>
         <% end %>
