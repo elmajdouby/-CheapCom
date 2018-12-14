@@ -21,10 +21,13 @@
       <%= render 'shared/flashes' %>
       <%= render 'shared/spacing' %>
     <% else %>
-      <% if controller_name == "products"%>
+      <% if params["controller"] == "products" && params["action"] == "index" %>
         <%= render 'shared/navbar' %>
         <%= render 'shared/categories_navbar' %>
         <%= render 'shared/products_navbar' %>
+      <% else %>
+        <%= render 'shared/logged_navbar' %>
+        <%= render 'shared/categories_navbar' %>
       <% end %>
     <% end %>
   <div class="container main-container">
