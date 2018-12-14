@@ -3,15 +3,19 @@
  <div class="container product1" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1513884923967-4b182ef167ab?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=fa19d6edab29be2843c6e0b650f31593&auto=format&fit=crop&w=750&q=80');" >
 
   <div class="col-xs-12 col-sm-offset-2">
-    <h1> Thanks for your purchase !!!</h1>
-        <h2>Product Name :  <%= @order.product.name %></h2>
-        <P>Description : <%= @order.product.description %></P>
-        <P>Category : <i><%= @order.product.producttype.name %></i></P>
-        <h3> Store </h3>
-        <p> <%= @order.product.user.email %></p>
-        <p>Price: <%= humanized_money_with_symbol(@order.amount) %></p>
-        <br/>
-        <br/>
+    <div class="thanks-purchase">
+      <h1> Thanks for your purchase !!!</h1>
+          <h2>Product Name :  <%= @order.product.name %></h2>
+          <P>Description : <%= @order.product.description %></P>
+          <P>Category : <i><%= @order.product.producttype.name %></i></P>
+          <h3> Store </h3>
+          <p> <%= @order.product.user.email %></p>
+          <p>Price: <%= humanized_money_with_symbol(@order.amount) %></p>
+          <br/>
+          <br/>
+
+      <h4><i class="fas fa-exclamation"></i>  Please, give this code to the Seller <strong style="color:#f7931e;">47A8B9</strong>, to confirm your purchase.</h2>
+    </div>
   </div>
 </div>
 

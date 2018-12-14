@@ -23,7 +23,7 @@
 .upload-pic{
 
   margin-bottom: 30px;
-  border:10px dashed #2eb9ce;
+  border:10px dashed darken(#ffcab0, 10%);
   border-radius: 10px;
   text-align: center;
   color: white;
@@ -265,7 +265,28 @@
   padding: 10px;
 }
 
+.own-button{
+    color: inherit;
+    text-decoration: none;
+    font-size: 25px;
+    background: darken(#ffcab0, 10%);
+    padding: 12px;
+    display: inline-block;
+    outline: 0;
+    border: 0;
+    border-radius: 10px;
+    letter-spacing: 1px;
 
+    color: #F5F5F5;
+    font-family: 'Lato', sans-serif;
+    cursor: pointer;
+    &:hover {
+      color: white;
+      text-decoration: none;
+      background: #fb9a40;
+      transition: all .4s ease-in-out;
+    }
+}
 
 
 

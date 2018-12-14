@@ -2,6 +2,9 @@
   <div class="row" >
     <div class="col-xs-12 col-sm-6 col-sm-offset-3">
       <div class="form-login">
+          <%= link_to root_path, class: "navbar-wagon-brand" do %>
+          <h2><%= image_tag "logo.png", class:"logo-icon"%></h2>
+          <% end %>
           <h2>Register</h2>
           <p>Please fill in this form to create an account.</p>
           <hr>
@@ -62,8 +65,8 @@
           </div>
 
           <div class="form-actions">
-            <%= f.button :submit, "Sign up", class:"btn btn-primary"  %>
-            <%= link_to "Back", :back %>
+            <%= f.button :submit, "Sign up", class:"btn own-button"  %>
+            <%= link_to "Back", :back  , class: "own-links"%>
           </div>
         <% end %>
 
