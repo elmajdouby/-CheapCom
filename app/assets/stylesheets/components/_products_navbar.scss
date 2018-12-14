@@ -164,3 +164,13 @@ body { font-family: sans-serif; }
   font-family: 'Raleway', sans-serif;
   font-size: 20px;
 }
+
+.grad-back{
+background: rgba(255,146,10,0.27);
+background: -moz-linear-gradient(left, rgba(255,146,10,0.27) 0%, rgba(255,175,75,0.35) 100%);
+background: -webkit-gradient(left top, right top, color-stop(0%, rgba(255,146,10,0.27)), color-stop(100%, rgba(255,175,75,0.35)));
+background: -webkit-linear-gradient(left, rgba(255,146,10,0.27) 0%, rgba(255,175,75,0.35) 100%);
+background: -o-linear-gradient(left, rgba(255,146,10,0.27) 0%, rgba(255,175,75,0.35) 100%);
+background: -ms-linear-gradient(left, rgba(255,146,10,0.27) 0%, rgba(255,175,75,0.35) 100%);
+background: linear-gradient(to right, rgba(255,146,10,0.27) 0%, rgba(255,175,75,0.35) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff920a', endColorstr='#ffaf4b', GradientType=1 );}
