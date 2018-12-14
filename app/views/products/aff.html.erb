@@ -1,0 +1,32 @@
+ <div class="row">
+    <h2 class="h2-title">Drop the unwanted items</h2>
+    <p class="h2-subtitle">please be carefull the drop is final ... </p>
+      <% @products.each do |product| %>
+              <div class="col-xs-12 col-sm-3 col-md-3 products-card">
+                <div class="card-containt">
+                  <% if product.productimages[0].nil? || Productimage.find(product.productimages[0].id).photo.url.nil? %>
+                    <% default_image = image_path("default_product.png") %>
+                  <% else %>
+                    <% default_image = cl_image_path Productimage.find(product.productimages[0].id).photo, height: 300, width: 400 %>
+                  <% end %>
+                 <div class="product-img" style="background-image: url(<%= default_image %>">
+                  </div>
+                    <div class="desc-card" >
+                      <h1> <%= product.name %> </h1>
+                      <p> <%= product.producttype.name %> </p>
+                      <h2> <%= humanized_money_with_symbol(product.price) %> </h2>
+                      <%= link_to '<i class="fas fa-trash"></i>'.html_safe , product_path(product), method: :delete, data: { confirm: 'Are you sure?' } %>
+                      <div class="row">
+                        <div class="col-xs-8 col-md-8 btns-div">
+                          <a class="buy" href="<%= product_path(product) %>">Buy Now</a>
+                        </div>
+                        <div class="col-xs-4 col-md-4 btns-div">
+                          <a class="buy" href="#"><i class="fas fa-heart"></i></a>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+              </div>
+          <% end %>
+  </div>

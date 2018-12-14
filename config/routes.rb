@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
 
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+
 
   resources :products
 
   devise_for :users, controllers: { registrations: 'users/registrations' }
-  root to: 'products#index'
+  root  to: 'products#index'
   resources :products do
     resources :productimages, only: [:create]
   end
@@ -36,6 +36,6 @@ Rails.application.routes.draw do
   end
 
   get '/product/search/' , to: 'products#search', as: 'productsearch'
-
-
+  get '/product/drop' , to: 'products#aff' , as: "productdrop"
+   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 end
