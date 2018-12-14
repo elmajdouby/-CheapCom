@@ -1,19 +1,35 @@
-<div class="container">
+<div class="container-fluid">
   <div class="row">
-    <h1>Data analysis...</h1>
-    <div class="col-xs-12 col-md-6 col-lg-4">
-      <canvas id="myChart" width="400" height="400"></canvas>
+    <h1 class="h2-title" style="text-align: left;">Products sales analysis</h1>
+    <div class="col-xs-12 col-md-6 col-lg-6 graphs-div" >
+      <canvas id="myChart"  ></canvas>
     </div>
 
-    <div class="col-xs-12 col-md-6 col-lg-4">
-      <canvas id="myCharte" width="400" height="400"></canvas>
+    <div class="col-xs-12 col-md-6 col-lg-6 graphs-div">
+      <canvas id="myCharte" ></canvas>
     </div>
-
-    <div class="col-xs-12 col-md-6 col-lg-4">
-      <canvas id="chart-area" width="400" height="400"></canvas>
-    </div>
-
   </div>
+  <div class="row">
+    <h1 class="h2-title" style="text-align: left;">Sales analysis by mounth</h1>
+    <div class="col-xs-12 col-md-6 col-lg-6 graphs-div" >
+     <canvas id="chart-area" width="511" height="255" class="chartjs-render-monitor" style="display: block; width: 511px; height: 255px;"></canvas>
+    </div>
+
+    <div class="col-xs-12 col-md-6 col-lg-6 graphs-div">
+     <canvas id="canvas2" width="947" height="473" class="chartjs-render-monitor" style="display: block; width: 947px; height: 473px;"></canvas>
+    </div>
+  </div>
+  <div class="row">
+    <h1 class="h2-title" style="text-align: left;">Search analysis</h1>
+    <div class="col-xs-12 col-md-6 col-lg-6 graphs-div" >
+      <canvas id="myChart1"  ></canvas>
+    </div>
+
+    <div class="col-xs-12 col-md-6 col-lg-6 graphs-div">
+      <canvas id="myCharte1" ></canvas>
+    </div>
+  </div>
+
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
@@ -28,12 +44,86 @@ var myChart = new Chart(ctx, {
             label: 'Smartphones sells graph in Casablanca',
             data: [12, 30, 3, 100, 2, 70],
             backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
+                'rgba(255, 99, 132, 0.9)',
+                'rgba(54, 162, 235, 0.9)',
+                'rgba(255, 206, 86, 0.9)',
+                'rgba(75, 192, 192, 0.9)',
+                'rgba(153, 102, 255, 0.9)',
+                'rgba(255, 159, 64, 0.9)'
+            ],
+            borderColor: [
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        }
+    }
+});
+var ctx = document.getElementById("myChart1");
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ["Iphone 10", "samsung S7", "Oppo", "HTC", "Nokia", "Huawei"],
+        datasets: [{
+            label: 'Research by zone',
+            data: [12, 30, 3, 100, 2, 70],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.9)',
+                'rgba(54, 162, 235, 0.9)',
+                'rgba(255, 206, 86, 0.9)',
+                'rgba(75, 192, 192, 0.9)',
+                'rgba(153, 102, 255, 0.9)',
+                'rgba(255, 159, 64, 0.9)'
+            ],
+            borderColor: [
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        }
+    }
+});
+var ctx = document.getElementById("myCharte");
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ["HP", "MACbook", "DELL", "IBM", "TOSHIBA", "ACCER"],
+        datasets: [{
+            label: '# Computers sales',
+            data: [1, 4, 20, 19, 5, 3],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.9)',
+                'rgba(54, 162, 235, 0.9)',
+                'rgba(255, 206, 86, 0.9)',
+                'rgba(75, 192, 192, 0.9)',
+                'rgba(153, 102, 255, 0.9)',
+                'rgba(255, 159, 64, 0.9)'
             ],
             borderColor: [
                 'rgba(255,99,132,1)',
@@ -57,21 +147,22 @@ var myChart = new Chart(ctx, {
     }
 });
 
-var ctx = document.getElementById("myCharte");
+// Graph nbr 6
+var ctx = document.getElementById("myCharte1");
 var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+        labels: ["Maarif", "Oulfa", "Palmier", "La geronde", "Maarif", "Zaitoune"],
         datasets: [{
-            label: '# of Votes',
+            label: '#Search by zone',
             data: [1, 4, 20, 19, 5, 3],
             backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
+                'rgba(255, 99, 132, 0.9)',
+                'rgba(54, 162, 235, 0.9)',
+                'rgba(255, 206, 86, 0.9)',
+                'rgba(75, 192, 192, 0.9)',
+                'rgba(153, 102, 255, 0.9)',
+                'rgba(255, 159, 64, 0.9)'
             ],
             borderColor: [
                 'rgba(255,99,132,1)',
@@ -94,9 +185,8 @@ var myChart = new Chart(ctx, {
         }
     }
 });
-</script>
-<script>
-    var randomScalingFactor = function() {
+
+  var randomScalingFactor = function() {
       return Math.round(Math.random() * 100);
     };
 
@@ -112,21 +202,21 @@ var myChart = new Chart(ctx, {
             randomScalingFactor(),
           ],
           backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
+                'rgba(255, 99, 132, 0.9)',
+                'rgba(54, 162, 235, 0.9)',
+                'rgba(255, 206, 86, 0.9)',
+                'rgba(75, 192, 192, 0.9)',
+                'rgba(153, 102, 255, 0.9)',
+                'rgba(255, 159, 64, 0.9)'
             ],
           label: 'Dataset 1'
         }],
         labels: [
-          'Red',
-          'Orange',
-          'Yellow',
-          'Green',
-          'Blue'
+          'phones',
+          'laptops',
+          'phones accessories',
+          'software',
+          'games'
         ]
       },
       options: {
@@ -139,38 +229,159 @@ var myChart = new Chart(ctx, {
       window.myPie = new Chart(ctx, config);
     };
 
-    document.getElementById('randomizeData').addEventListener('click', function() {
-      config.data.datasets.forEach(function(dataset) {
-        dataset.data = dataset.data.map(function() {
-          return randomScalingFactor();
-        });
-      });
 
-      window.myPie.update();
-    });
+    // 6
 
-    var colorNames = Object.keys(window.chartColors);
-    document.getElementById('addDataset').addEventListener('click', function() {
-      var newDataset = {
-        backgroundColor: [],
-        data: [],
-        label: 'New dataset ' + config.data.datasets.length,
-      };
-
-      for (var index = 0; index < config.data.labels.length; ++index) {
-        newDataset.data.push(randomScalingFactor());
-
-        var colorName = colorNames[index % colorNames.length];
-        var newColor = window.chartColors[colorName];
-        newDataset.backgroundColor.push(newColor);
+    window.chartColors = {
+      red: 'rgb(255, 99, 132)',
+      orange: 'rgb(255, 159, 64)',
+      yellow: 'rgb(255, 205, 86)',
+      green: 'rgb(75, 192, 192)',
+      blue: 'rgb(54, 162, 235)',
+      purple: 'rgb(153, 102, 255)',
+      grey: 'rgb(231,233,237)'
+    };
+     var config = {
+      type: 'line',
+      data: {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+        datasets: [{
+          label: 'sales',
+          fill: false,
+          backgroundColor: window.chartColors.blue,
+          borderColor: window.chartColors.blue,
+          data: [
+            randomScalingFactor(),
+            randomScalingFactor(),
+            randomScalingFactor(),
+            randomScalingFactor(),
+            randomScalingFactor(),
+            randomScalingFactor(),
+            randomScalingFactor()
+          ],
+        }, {
+          label: 'search',
+          fill: false,
+          backgroundColor: window.chartColors.green,
+          borderColor: window.chartColors.green,
+          borderDash: [5, 5],
+          data: [
+            randomScalingFactor(),
+            randomScalingFactor(),
+            randomScalingFactor(),
+            randomScalingFactor(),
+            randomScalingFactor(),
+            randomScalingFactor(),
+            randomScalingFactor()
+          ],
+        }, {
+          label: 'conversion',
+          backgroundColor: window.chartColors.red,
+          borderColor: window.chartColors.red,
+          data: [
+            randomScalingFactor(),
+            randomScalingFactor(),
+            randomScalingFactor(),
+            randomScalingFactor(),
+            randomScalingFactor(),
+            randomScalingFactor(),
+            randomScalingFactor()
+          ],
+          fill: true,
+        }]
+      },
+      options: {
+        responsive: true,
+        title: {
+          display: true,
+          text: 'Chart.js Line Chart'
+        },
+        tooltips: {
+          mode: 'index',
+          intersect: false,
+        },
+        hover: {
+          mode: 'nearest',
+          intersect: true
+        },
+        scales: {
+          xAxes: [{
+            display: true,
+            scaleLabel: {
+              display: true,
+              labelString: 'Month'
+            }
+          }],
+          yAxes: [{
+            display: true,
+            scaleLabel: {
+              display: true,
+              labelString: 'Value'
+            }
+          }]
+        }
       }
+    };
 
-      config.data.datasets.push(newDataset);
-      window.myPie.update();
-    });
 
-    document.getElementById('removeDataset').addEventListener('click', function() {
-      config.data.datasets.splice(0, 1);
-      window.myPie.update();
-    });
-  </script>
+    //
+
+       var randomScalingFactor = function() {
+      return Math.round(Math.random() * 100);
+    };
+
+    var config2 = {
+      type: 'doughnut',
+      data: {
+        datasets: [{
+          data: [
+            randomScalingFactor(),
+            randomScalingFactor(),
+            randomScalingFactor(),
+            randomScalingFactor(),
+            randomScalingFactor(),
+          ],
+          backgroundColor: [
+            window.chartColors.red,
+            window.chartColors.orange,
+            window.chartColors.yellow,
+            window.chartColors.green,
+            window.chartColors.blue,
+          ],
+          label: 'Dataset 1'
+        }],
+        labels: [
+          'phones',
+          'laptops',
+          'phones accessories',
+          'software',
+          'games'
+        ]
+      },
+      options: {
+        responsive: true,
+        legend: {
+          position: 'top',
+        },
+        title: {
+          display: true,
+          text: 'Chart.js Doughnut Chart'
+        },
+        animation: {
+          animateScale: true,
+          animateRotate: true
+        }
+      }
+    };
+
+    window.onload = function() {
+      var ctx = document.getElementById('chart-area').getContext('2d');
+      window.myDoughnut = new Chart(ctx, config);
+      var ctx2 = document.getElementById('canvas2').getContext('2d');
+      window.myLine = new Chart(ctx2, config2);
+    };
+
+</script>
+
+
+

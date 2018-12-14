@@ -32,4 +32,8 @@ class ProductPolicy < ApplicationPolicy
   def search?
     true
   end
+
+  def aff?
+    true
+  end
 end

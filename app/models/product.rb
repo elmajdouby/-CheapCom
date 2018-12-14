@@ -5,6 +5,6 @@ class Product < ApplicationRecord
   has_many :orders
   monetize :price_cents
 
-  has_many :productimages
+  has_many :productimages, dependent: :destroy
 
 end

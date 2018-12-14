@@ -5,7 +5,7 @@
   <div class="col-xs-12 col-sm-8 col-md-8 products-search-show">
   <!-- Search input  -->
   <div class="col-xs-12 col-md-12 search-blok">
-    <% if user_signed_in? %>
+
       <form  action=<%= productsearch_path %> class="search_inputs" accept-charset="UTF-8" method="get">
         <div class="row">
           <div class="col-xs-4 col-sm-4 col-md-4">
@@ -23,7 +23,7 @@
         </div>
         <input type="submit" id="distSubmit" class="btn btn-warning hidden">
       </form>
-    <% end %>
+
   </div>
 <!-- END Search input -->
   <h2 class="h2-title" style="text-align: left; ">Searched articles : </h2>
