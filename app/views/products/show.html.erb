@@ -25,26 +25,15 @@
             </div>
           </div>
         </div>
-        <% if owner_test %>
-          <div class="col-xs-12" id="new_image">
-             <%=  render 'productimages/index', product: @product %>
-          </div>
-        <% end %>
+  <% if owner_test %>
+    <div class="col-xs-12" id="new_image">
+       <%=  render 'productimages/index', product: @product %>
+    </div>
+  <% end %>
       </div>
     </div>
     <div class="col-xs-12 col-sm-4 col-md-4" >
         <%= render "shared/map", markers: @markers %>
     </div>
-
   </div>
-
-
-
-
-
-
-
-
-
-
 

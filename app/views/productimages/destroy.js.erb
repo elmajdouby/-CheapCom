@@ -3,4 +3,4 @@ function refreshForm(innerHTML,elmentID) {
   const newProductimageForm = document.getElementById(elmentID);
   newProductimageForm.innerHTML = innerHTML;
 }
-refreshForm('<%= j render "productimages/carousel" %>','newcarousel');
+refreshForm('<%= j render "productimages/carousel", productimage: @pt, product: @product %>','newcarousel');
