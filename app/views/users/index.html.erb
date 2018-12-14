@@ -4,7 +4,12 @@
     <% @users.each do |user| %>
       <div class="col-xs-12 col-md-4">
         <div class="user-card">
-          <img class="card-avatar" src=<%= user.avatar %> />
+          <% if user.avatar.present? %>
+              <% avatar = cl_image_path(user.avatar) %>
+            <% else %>
+              <% avatar = image_path("default_avatar.png") %>
+            <% end %>
+          <img class="card-avatar" src=<%= avatar %> />
           <h1><%= user.fistname.capitalize %> <%= user.lastname.capitalize %></h1>
           <p><%= user.email %></p>
           <p> <strong>User Role : </strong> <%= user.role %> </p> <br/>
