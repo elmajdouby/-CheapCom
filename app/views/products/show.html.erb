@@ -12,8 +12,7 @@
             <P><i class="fas fa-signature" style="color: #f7931e;"></i>Description : <%= @product.description %></P>
             <p><i class="fas fa-dollar-sign" style="color: #f7931e;"></i>   Price: <span class="prix"><%= humanized_money_with_symbol(@product.price) %></span></p>
             <P><i class="fas fa-star" style="color: #f7931e;"></i>Category : <i><%= @product.producttype.name %></i></P>
-            <p style="color: gray;"><i class="fas fa-store"></i> Store : </p>
-            <p style="color: #f7931e;"> <%= @product.user.username %></p>
+            <p style="color:  #f7931e;"><i class="fas fa-store"></i> Store : <%= @product.user.username.capitalize %></p>
             <br/>
             <div class="col-xs-6">
               <div class="form-group">
