@@ -8,8 +8,8 @@
           <h1><%= user.fistname.capitalize %> <%= user.lastname.capitalize %></h1>
           <p><%= user.email %></p>
           <p> <strong>User Role : </strong> <%= user.role %> </p> <br/>
-          <a href="#" class="show-profile"> Show Profile</a>
-          <a href="#" class="update-profile"> Update Role</a>
+          <%= link_to 'Grant admin', users_grant_path(user,"admin") %>
+          <%= link_to 'Grant seller', users_grant_path(user,"seller") %>
         </div>
       </div>
     <% end %>

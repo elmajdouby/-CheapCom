@@ -1,4 +1,4 @@
-
+<!--
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1513884923967-4b182ef167ab?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=fa19d6edab29be2843c6e0b650f31593&auto=format&fit=crop&w=750&q=80');">
@@ -25,5 +25,41 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
+
+<div class="container-payment">
+  <div class="row">
+    <div class="col-xs-12 col-sm-4 col-md-6  ">
+      <div class="order-check">
+        <h1>1. Please, Check your information :</h1>
+        <div class="check-client-info">
+          <p> <strong><%= current_user.fistname.capitalize %> <%= current_user.lastname.capitalize %> </strong> </p>
+          <p> <i class="fas fa-map-marker-alt"></i> <%= current_user.address.capitalize %></p>
+        </div>
+          <h1>2. Review before paying your order :</h1>
+          <p><strong>Purchase of :</strong> <%= @order.product.name.capitalize %></p>
+          <%= cl_image_tag @order.product.productimages.first.photo.url , class: "order-img"%>
+
+          <%= form_tag order_payments_path(@order) do %>
+            <article>
+              <label class="amount">
+                <span>Price: <%= humanized_money_with_symbol(@order.amount) %></span>
+              </label>
+            </article>
+
+
+            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+              data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+              data-name="My Product"
+              data-email="<%= current_user.email %>"
+              data-description="<%= @order.product.name %>"
+              data-amount="<%= @order.amount_cents %>"
+              data-currency="<%= @order.amount.currency %>"></script>
+          <% end %>
+
+
+      </div>
+    </div>
+  </div>
+</div>
