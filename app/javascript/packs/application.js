@@ -6,6 +6,7 @@ import "../uploadprodpics.js";
 import "../producttype.js";
 import "../upload_image.js";
 import "../search_range.js";
+import "../grant_role.js";
 
 
 //import "../navbar.js"
