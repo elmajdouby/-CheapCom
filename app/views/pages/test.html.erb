@@ -1,16 +1,17 @@
-<div class="container">
+<div class="container-fluid">
   <div class="row">
     <h1>Data analysis...</h1>
-    <div class="col-xs-12 col-md-6 col-lg-4">
-      <canvas id="myChart" width="400" height="400"></canvas>
+    <div class="col-xs-12 col-md-6 col-lg-6 graphs-div" >
+      <canvas id="myChart"  ></canvas>
     </div>
 
-    <div class="col-xs-12 col-md-6 col-lg-4">
-      <canvas id="myCharte" width="400" height="400"></canvas>
+    <div class="col-xs-12 col-md-6 col-lg-6 graphs-div">
+      <canvas id="myCharte" ></canvas>
     </div>
-
-    <div class="col-xs-12 col-md-6 col-lg-4">
-      <canvas id="chart-area" width="400" height="400"></canvas>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-md-6 col-lg-6 graphs-div">
+      <canvas id="chart-area" ></canvas>
     </div>
 
   </div>
@@ -56,7 +57,6 @@ var myChart = new Chart(ctx, {
         }
     }
 });
-
 var ctx = document.getElementById("myCharte");
 var myChart = new Chart(ctx, {
     type: 'bar',
@@ -99,7 +99,6 @@ var myChart = new Chart(ctx, {
     var randomScalingFactor = function() {
       return Math.round(Math.random() * 100);
     };
-
     var config = {
       type: 'pie',
       data: {
@@ -133,22 +132,18 @@ var myChart = new Chart(ctx, {
         responsive: true
       }
     };
-
     window.onload = function() {
       var ctx = document.getElementById('chart-area').getContext('2d');
       window.myPie = new Chart(ctx, config);
     };
-
     document.getElementById('randomizeData').addEventListener('click', function() {
       config.data.datasets.forEach(function(dataset) {
         dataset.data = dataset.data.map(function() {
           return randomScalingFactor();
         });
       });
-
       window.myPie.update();
     });
-
     var colorNames = Object.keys(window.chartColors);
     document.getElementById('addDataset').addEventListener('click', function() {
       var newDataset = {
@@ -156,19 +151,15 @@ var myChart = new Chart(ctx, {
         data: [],
         label: 'New dataset ' + config.data.datasets.length,
       };
-
       for (var index = 0; index < config.data.labels.length; ++index) {
         newDataset.data.push(randomScalingFactor());
-
         var colorName = colorNames[index % colorNames.length];
         var newColor = window.chartColors[colorName];
         newDataset.backgroundColor.push(newColor);
       }
-
       config.data.datasets.push(newDataset);
       window.myPie.update();
     });
-
     document.getElementById('removeDataset').addEventListener('click', function() {
       config.data.datasets.splice(0, 1);
       window.myPie.update();

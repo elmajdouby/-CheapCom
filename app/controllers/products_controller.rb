@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show, :search]
   before_action :set_product, only: [:show, :edit, :update, :destroy, :buy]
-  after_action :set_authorize, only: [:show, :new, :create, :edit, :update, :destroy, :buy]
+  after_action :set_authorize, only: [:show, :new, :create, :edit, :update, :destroy , :buy]
   skip_after_action :verify_authorized, only: [:search]
   # GET /products
   # GET /products.json
@@ -20,6 +20,11 @@ class ProductsController < ApplicationController
       @products =  policy_scope(Product).order(created_at: :desc)
     end
     # raise
+  end
+
+  def aff
+      @products =  policy_scope(Product).order(created_at: :desc)
+      authorize @products
   end
 
   # GET /products/1
@@ -130,7 +135,7 @@ class ProductsController < ApplicationController
   def destroy
     @product.destroy
     respond_to do |format|
-      format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
+      format.html { redirect_to productdrop_url, notice: 'Product was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
