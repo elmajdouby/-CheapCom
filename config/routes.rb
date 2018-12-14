@@ -20,6 +20,11 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   get '/users',   to: 'users#index'
+
+  devise_scope :user do
+    get '/grant/users/:id/:role',   to: 'users/registrations#grant', as: 'users_grant'
+  end
+
   get "/dashboard" => "pages#home"
   get "/charts", to: "pages#test", as: "charts"
   get "/testing" => "pages#test"
