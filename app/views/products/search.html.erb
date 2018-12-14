@@ -43,7 +43,7 @@
                       <h1> <%= product.name %> </h1>
                       <p> <%= product.producttype.name %> </p>
                       <h2> <%= humanized_money_with_symbol(product.price) %> </h2>
-                      <p class="desc"> <%=  product.description.truncate(20) %> </p>
+
                       <div class="row">
                         <div class="col-xs-8 col-md-8 btns-div">
                           <a class="buy" href="<%= product_path(product) %>">Buy Now</a>
