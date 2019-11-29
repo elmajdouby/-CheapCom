@@ -1,0 +1,66 @@
+
+<%= simple_form_for(@member) do |f| %>
+  <%= include_gon %>
+  <%= f.error_notification %>
+    <div class="form-login" >
+      <br>
+      <div class="form-inputs">
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12">
+            <%= f.label "Lien *"  %>
+            <%= f.collection_select(:type_id, Type.where(label: 'Lien'), :id, :value, { :prompt => 'Lien'}, { class: 'form-control' }) %>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12">
+            <%= f.label "Sexe *"  %>
+            <%= f.collection_select(:sexe, Type.where(label: 'Sexe'), :id, :value, { :prompt => 'Sexe'}, {class: 'form-control' }) %>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12">
+            <%= f.input :lastname,
+                    required: true,
+                    autofocus: true ,
+                    label: "Nom",
+                    input_html: { autocomplete: "lastname", placeholder: "Enter your lastname" , id: "lastname" }%>
+          </div>
+        </div>
+        <div class="row">  
+          <div class="col-xs-12 col-sm-12 col-md-12">
+            <%= f.input :firstname,
+                        required: true,
+                        autofocus: true ,
+                        label: "Prénom",
+                        input_html: { autocomplete: "firstname" }, :style => "padding-top:" %>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12">
+            <%= f.input :birthdate,
+                        required: true,
+                        autofocus: true ,
+                        label: "Date de naissance",
+                        input_html: {class: 'datepicker', autocomplete: "birthdate" }%>
+          </div>
+        </div>
+
+
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-actions">
+              <%= f.button :submit, class:"own-button btn-lg" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<% end %>
+
+
+
+

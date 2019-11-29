@@ -1,31 +1,97 @@
-<div class="container">
-  <div class="col-xs-12 col-md-12 ">
-    <h1 class="welcome-message"> Welcome <span class="mail-user"> <%= current_user.username %> </span>  </h1>
-</div>
-    <div class="col-xs-12 col-md-6">
-       <div class="img-settings" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://images.pexels.com/photos/934069/pexels-photo-934069.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260');">
-            <h2> Add Product</h2>
-            <a class="card-link" href="../products/new" ></a>
-        </div>
+<% image1 = image_path'Club1.jpg'%>
+<% image2 = image_path'Club2.jpg'%>
+<% image3 = image_path'Club3.jpg'%>
+<% image4 = image_path'Club4.jpg'%>
+<% image5 = image_path'Club5.jpg'%>
 
-    </div>
-    <div class="col-xs-12 col-md-6">
-        <div class="img-settings" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://images.pexels.com/photos/322207/pexels-photo-322207.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260);">
-          <h2> Add Product Type</h2>
-          <a class="card-link" href="../producttypes/new" ></a>
-        </div>
-
-    </div>
-    <div class="col-xs-12 col-md-6">
-      <div class="img-settings" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://source.unsplash.com/1600x900/?nature,water');">
-            <h2> Profile Settings</h2>
+<% if user_signed_in?%>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12">
+       <div class="col">
+         <ul id="progress-bar" class="progressbar">
+          <li class="active">(1) Création compte</li>
+          <% if current_user.category.present? && current_user.subsidiary.present?%>
+            <li class="active">(2) Paramétrage profil</li>
+          <% else %>
+            <li>(2) Paramétrage profil</li>
+          <% end %>
+          <% if  Member.where("user_id = ?", current_user.id).count > 0 %>
+            <li class="active">(3) Ajout membre</li>
+          <% else %>
+            <li>(3) Ajout membre</li>
+          <% end %>
+          <% if  Subscription.where("user_id = ?", current_user.id).count > 0 %>
+            <li class="active">(4) Souscription 2020</li>
+          <% else %>
+            <li>(4) Souscription 2020</li>
+          <% end %>
+        </ul>
+       </div>
       </div>
     </div>
-    <div class="col-xs-12 col-md-6">
-        <div class="img-settings" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://source.unsplash.com/WLUHO9A_xik/1600x900');">
-          <h2> Sales</h2>
-        </div>
+  </div>  
+  <div class="container">
+    <% if @userDetails.present? %>
+      <div class="col-xs-12 col-sm-12 col-md-12">
+        <h1 class="welcome-message"> Bienvenue <span class="mail-user"> <%= @userDetails.firstname + ' ' + @userDetails.lastname %> </span>  </h1>
+      </div>
+    <% else %>
+      <br><br>
+    <% end %>
+    
+    <div class="col-xs-12 col-sm-6 col-md-6">
+      <div class="img-settings" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url(<%= image1%>);">
+      <%= link_to edit_user_registration_path(current_user) do %>
+        <i class="fas fa-user-lock fa-4x" style="font-size:72px;color: white;"> Infos profil</i> <%= t(".profile", default: "") %>
+      <% end %>
+
+      </div>
     </div>
-</div>
+
+    <% if current_user.category.present? && current_user.subsidiary.present?%>
+      <div class="col-xs-12 col-sm-6 col-md-6">
+        <div class="img-settings" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url(<%= image2%>);">
+          <%= link_to members_path do %>
+             <i class="fas fa-users fa-4x" style="font-size:72px;color: white;"> Members</i> <%= t(".profile", default: "") %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+
+    <% if  Member.where("user_id = ?", current_user.id).count > 0 %>
+      <div class="col-xs-12 col-sm-6 col-md-6">
+        <div class="img-settings" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url(<%= image3%>);">
+          <%= link_to subscriptions_path do %>
+             <i class="fas fa-list-alt" style="font-size:72px;color: white;"> Abonnements </i> <%= t(".profile", default: "") %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+
+    <% if  Badge.where("user_id = ?", current_user.id).count > 0 %>
+      <div class="col-xs-12 col-sm-6 col-md-6">
+        <div class="img-settings" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url(<%= image5%>);">
+          <%= link_to badges_path do %>
+             <i class="fas fa-id-card-alt" style="font-size:72px;color: white;"> Badges </i> <%= t(".profile", default: "") %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  <div>
+<% else%>
+  <div class="container-full">
+    <!-- Navbar caroussel -->
+      <div class="carousel carousel-main " data-flickity='{"fullscreen": true, "autoPlay": true, "autoPlay": 5000, "pageDots": false}'>
+        <div class="carousel-cells" style="background-image: url(<%= image1 %>);background-size: cover !important;"></div>
+        <div class="carousel-cells" style="background-image: url(<%= image2 %>);background-size: cover !important;"></div>
+        <div class="carousel-cells" style="background-image: url(<%= image3 %>);background-size: cover !important;"></div>
+        <div class="carousel-cells" style="background-image: url(<%= image4 %>);background-size: cover !important;"></div>
+        <div class="carousel-cells" style="background-image: url(<%= image5 %>);background-size: cover !important;"></div>
+      </div>
+     <!-- End navbar raroussel -->
+  </div>
+<% end %>
 
 

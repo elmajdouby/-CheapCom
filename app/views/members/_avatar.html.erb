@@ -1,0 +1,50 @@
+<div id="editMemberModal" class="modal fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">x</button>
+      <h4 class="modal-title" id="myModalLabel">Mis à jour Photo <%= @member.lastname + ' ' + @member.firstname %></h4>
+    </div>
+    <div class="modal-body">
+      <%= simple_form_for(@member) do |f| %>
+      <%= include_gon %>
+        <div class="form-login" >
+          <div class="form-inputs">
+          <div class="col-xs-12 col-sm-12 col-md-12">
+          <div class="avatar-upload">
+            <div class="avatar-edit">
+              <input type='file' id="user_avatar" accept=".jpg, .jpeg" />
+              <label for="user_avatar"></label>
+            </div>
+            <div class="avatar-preview container2">
+              <% if @member.avatar.present? %>
+                <% avatar = image_path @member.avatar %>
+              <% else %>
+                <% avatar = image_path("default_avatar.png") %>
+              <% end %>
+                <div id="imagePreview" style="background-image: url(<%= avatar %>);">
+                    <input type="hidden" name="_token" value="{{csrf_token()}}">
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+         <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+              <%= f.input :lastname,
+                      required: true,
+                      autofocus: true ,
+                      as: "hidden",
+                      input_html: { autocomplete: "lastname", placeholder: "Enter your lastname" , id: "lastname" }%>
+            </div>
+          </div>
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-actions">
+              <%= f.button :submit,"Charger l'image" ,class:"own-button btn-lg" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

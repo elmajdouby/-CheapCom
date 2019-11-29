@@ -1,0 +1,10 @@
+//**************** Subcription ****************
+global.arrayMember = [];
+global.arrayMemberSuplement  = [];
+global.arrayTennis = [];
+global.index = 0;
+global.cptSuplement = 0;
+global.memberRate = 0;
+global.memberSuplementRate = 0;
+global.tennisRate = 0;
+//**************** Subcription ****************

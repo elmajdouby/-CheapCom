@@ -1,125 +1,110 @@
-<div class="main-container">
-  <div class="container">
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= f.error_notification %>
+  <div class="container" >
     <div class="form-login" >
-      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-        <%= f.error_notification %>
-        <div class="avatar-upload">
-          <div class="avatar-edit">
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6">
+            <%= image_tag @qr_string %>
+            <% if current_user.telephonenumber.present? %>
+              <%= current_user.username + '/' + current_user.email + '/' + current_user.telephonenumber  %>
+            <% else %>
+               <%= current_user.username + '/' + current_user.email  %>
+            <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="form-login" >
+      <div class="form-inputs">
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-md-6">
+            <%= f.input :email, required: true, autofocus: true %>
+            <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+            <% end %>
+          </div>
 
-            <%= f.input :avatar,
+          <div class="col-xs-12 col-sm-6 col-md-6">
+
+            <%= f.input :username,
                         required: true,
                         autofocus: true ,
-                        label: false,
-                        wrapper: false,
-                        input_html: { type: 'file', id: "user_avatar", accept: ".png, .jpg, .jpeg", name: "user[avatar]", class: "{{ $errors->has('email') ? 'alert alert-danger' : '' }} required file form-control-file is-valid" }%>
-
-              <label for="user_avatar"></label>
+                        label: "Matricule",
+                        input_html: { autocomplete: "username", placeholder: "Matricule"  }%>
           </div>
-          <div class="avatar-preview container2">
-            <% if current_user.avatar.present? %>
-              <% avatar = cl_image_path(current_user.avatar) %>
-            <% else %>
-              <% avatar = image_path("default_avatar.png") %>
-            <% end %>
-              <div id="imagePreview" style="background-image: url(<%= avatar %>);">
-                  <input type="hidden" name="_token" value="{{csrf_token()}}">
-              </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-md-6">
+            <%= f.input :current_password,
+                        required: true,
+                        label: "Mot de passe",
+                        input_html: { placeholder: "Votre mot de passe pour le changment" } %>
+          </div>
+
+          <div class="col-xs-12 col-sm-6 col-md-6">
+            <%= f.input :password,
+                        required: false,
+                        label: "Nouveau mot de passe",
+                        input_html: { placeholder: "Blanc pour ne pas modifier" } %>
           </div>
         </div>
 
-        <div class="form-inputs">
-
-          <div class="row">
-            <div class="col-xs-12 col-md-6">
-              <%= f.input :email, required: true, autofocus: true %>
-
-              <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-                  <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-              <% end %>
-            </div>
-            <div class="col-xs-12 col-md-6">
-              <%= f.input :address,
-                      required: true,
-                      autofocus: true ,
-                      input_html: { autocomplete: "address", placeholder: "Enter your address" , id: "address" }%>
-            </div>
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-md-6">
+            <%= f.input :password_confirmation,
+                        required: false,
+                        label: "Confirmer le mot de passe",
+                        input_html: { placeholder: "Confirmer le nouveau mot de passe" } %>
           </div>
-
-          <div class="row">
-            <div class="col-xs-12 col-md-6">
-              <%= f.input :username,
-                          required: true,
-                          autofocus: true ,
-                          input_html: { autocomplete: "username" }%>
-            </div>
-            <div class="col-xs-12 col-md-6">
-              <%= f.input :password,
-                          hint: "leave it blank if you don't want to change it",
-                          required: false,
-                          input_html: { autocomplete: "new-password" } %>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-xs-12 col-md-6">
-              <%= f.input :fistname,
-                          required: true,
-                          autofocus: true ,
-                          input_html: { autocomplete: "fistname" }, :style => "padding-top:" %>
-            </div>
-            <div class="col-xs-12 col-md-6">
-              <%= f.input :current_password,
-                          hint: "we need your current password to confirm your changes",
-                          required: true,
-                          input_html: { autocomplete: "current-password" } %>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-xs-12 col-md-6">
-              <%= f.input :lastname,
-                          required: true,
-                          autofocus: true ,
-                          input_html: { autocomplete: "lastname"}%>
-            </div>
-            <div class="col-xs-12 col-md-6">
-              <%= f.input :password_confirmation,
-                          required: false,
-                          input_html: { autocomplete: "new-password" } %>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-xs-7 col-sm-3 ">
-              <div class="form-actions">
-                <%= f.button :submit, "Update", class:"own-button btn-lg" %>
-              </div>
-            </div>
-          </div>
-
         </div>
-      <% end %>
+      </div>
+    </div>
 
-      <p>
-        Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %>
-       </p>
-      <%= link_to "Back", :back %>
+    <div class="form-login" >
+      <div class="form-inputs">
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-md-6">
+             <%= f.label "Filiale *"  %>
+            <%= f.collection_select(:subsidiary, Type.where(label: 'Filiale'), :id, :value, { :prompt => 'Filiale'}, {class: 'form-control' }) %>
+          </div>
+
+          <div class="col-xs-12 col-sm-6 col-md-6">
+            <%= f.label "Catégorie *"  %>
+            <%= f.collection_select(:category, Type.where(label: 'Catégorie'), :id, :value, { :prompt => 'Catégorie'}, {class: 'form-control' }) %>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-md-6">
+            <%= f.input :telephonenumber,
+                        required: false,
+                        label: "Téléphone",
+                        input_html: { placeholder: "Téléphone GSM ou Fixe" } %>
+          </div>
+
+          <div class="col-xs-12 col-sm-6 col-md-6">
+            <%= f.input :post,
+                        required: false,
+                        label: "Autres contact",
+                        input_html: { placeholder: "Post cisco ou autres" } %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-login" >
+    <div class="container" >
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-6">
+        <div class="form-actions">
+          <%= f.button :submit, "Mettre à jour", class:"own-button btn-lg" %>
+        </div>
+      </div>
+    </div>
+    </div>
     </div>
   </div>
-  <%= render "shared/map", markers: @markers %>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
+<% end %>
 
 
 

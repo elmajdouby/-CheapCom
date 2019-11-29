@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show, :search]
   before_action :set_product, only: [:show, :edit, :update, :destroy, :buy]
   after_action :set_authorize, only: [:show, :new, :create, :edit, :update, :destroy , :buy]
-  skip_after_action :verify_authorized, only: [:search]
+  # skip_after_action :verify_authorized
   # GET /products
   # GET /products.json
   def index

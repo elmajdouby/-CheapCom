@@ -1,0 +1,29 @@
+<div class="container">
+  <h1>Drag & Drop</h1>
+  <div class="left">
+    <div id="drag-elements">
+      <% @members.each do |member|%>
+        <div>
+
+          <div class="photo-upload">
+            <div class="photo-preview container2">
+              <% if member.avatar.present? %>
+                <% avatar = image_path member.avatar %>
+              <% else %>
+                <% avatar = image_path("default_avatar.png") %>
+              <% end %>
+              <div id="photoPreview" data-member-id=<%= member.id %> data-member-firstname=<%= member.firstname %> style="background-image: url(<%= avatar %>);">
+                <input type="hidden" name="_token" value="{{csrf_token()}}">
+              </div>
+            </div>
+          </div>
+
+        </div>
+      <% end %>
+    </div>
+    <div id="drop-target"></div>
+  </div>
+  <div class="right">
+    <div id="display">Display</div>
+  </div>
+</div>

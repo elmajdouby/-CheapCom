@@ -1,3 +1,4 @@
+
 // Graphical variables
 @import "config/fonts";
 @import "config/colors";
@@ -8,10 +9,15 @@
 @import "bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import "jquery-ui/datepicker";
+@import "jquery-ui";
+@import "dragula";
+@import "jquery-ui/draggable";
+@import "jquery-ui/sortable";
 
 // Your CSS partials
 @import "layouts/index";
 @import "components/index";
 @import "pages/index";
-@import "components/upload_image";
+
 

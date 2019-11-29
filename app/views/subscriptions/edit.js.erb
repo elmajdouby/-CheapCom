@@ -1,0 +1,8 @@
+// $("#modalwindow").html('<%= j (render 'edit') %>');
+// $("#subscriptionmodal").modal();
+// $("#modalwindow").slideDown(350);
+
+$('<%= j render "edit" %>').modal().on('shown.bs.modal',function() {
+  rates();
+  myDragula();
+});

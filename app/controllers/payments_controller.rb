@@ -1,35 +1,74 @@
 class PaymentsController < ApplicationController
-
-  before_action :set_order, :set_authorize
-
-  def new
+  before_action :set_payment, only: [:show, :edit, :update, :destroy]
+  after_action :set_authorize, except: :index
+  before_action :set_subscription
+  before_action :format
+  # GET /payments
+  def index
+    @subscriptions = Subscription.all
+    @payments = Payment.all
   end
 
+  # GET /payments/1
+  def show
+  end
+
+  # GET /payments/new
+  def new
+    @payment = @subscription.payments.build
+  end
+
+  # GET /payments/1/edit
+  def edit
+  end
+
+  # POST /payments
   def create
-    customer = Stripe::Customer.create(
-    source: params[:stripeToken],
-    email:  params[:stripeEmail])
+    @payment = Payment.new(payment_params)
+    @payment.subscription = @subscription
+    @payment.user = current_user
+    if @payment.save
+      redirect_to subscriptions_path, notice: 'Payment was successfully created.'
+    else
+      render :new
+    end
+  end
 
-    charge = Stripe::Charge.create(
-      customer:     customer.id,   # You should store this customer id and re-use it.
-      amount:       @order.amount_cents,
-      description:  "Payment for CheapDotCom #{@order.product_id} for order #{@order.id}",
-      currency:     @order.amount.currency)
+  # PATCH/PUT /payments/1
+  def update
+    if @payment.update(payment_params)
+      redirect_to subscription_payments_path(@subscription), notice: 'Payment was successfully updated.'
+    else
+      render :edit
+    end
+  end
 
-    @order.update(payment: charge.to_json, state: 'paid')
-    redirect_to order_path(@order)
-
-    rescue Stripe::CardError => e
-      flash[:alert] = e.message
-      redirect_to new_order_payment_path(@order)
+  # DELETE /payments/1
+  def destroy
+    @payment.destroy
+    redirect_to subscriptions_path, notice: 'Payment was successfully destroyed.'
   end
 
   private
-    def set_order
-    @order = current_user.orders.where(state: 'pending').find(params[:order_id])
-  end
 
+    def format
+      respond_to do |format|
+        format.html
+        format.js
+      end
+    end
+    # Use callbacks to share common setup or constraints between actions.
+    def set_payment
+      @payment = Payment.find(params[:id])
+    end
+    def set_subscription
+      @subscription = Subscription.find(params[:subscription_id])
+    end
+    # Only allow a trusted parameter "white list" through.
+    def payment_params
+      params.require(:payment).permit(:webtransaction, :amount, :subscription_id, :type_id, :user_id)
+    end
   def set_authorize
-   authorize @order
+    authorize @payment
   end
 end

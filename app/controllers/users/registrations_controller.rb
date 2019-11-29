@@ -3,7 +3,8 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update, :grant]
-
+  before_action :set_user, only: [:edit]
+  # skip_before_action :verify_authenticity_token, only: [:base64_avatar]
   # GET /resource/sign_up
   def new
     super
@@ -15,17 +16,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def edit
-    @user = User.find(current_user.id)
-    unless @user.latitude.nil? && @user.longitude.nil?
-      @markers = [@user].map do |cordinate|
-        {
-          lng: cordinate.longitude,
-          lat: cordinate.latitude,
-          infoWindow: { content: render_to_string(partial: "/shared/info_windows", locals: { cordinate: cordinate }) }
-        }
-      end
-    end
-    super
+    @qr_string = base64_qrcode(
+                              current_user.username + '/' +
+                              # current_user.telephonenumber + '/' +
+                              # current_user.post + '/' +
+                              current_user.email
+                              )
+    @user.qrcode = @qr_string
+    @user.save
   end
 
   def grant
@@ -34,6 +32,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user.save
     redirect_to users_path
   end
+
+  # def base64_avatar
+  #   @user.avatar = params[:avatar]
+  #   @user.save
+  #   # redirect_to edit_user_registration(params[:id])
+  # end
 
   # PUT /resource
   # def update
@@ -54,19 +58,40 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  private
+
+  def set_user
+    @user = User.find(current_user.id)
+  end
+
+  def base64_qrcode(content)
+    qrcode = RQRCode::QRCode.new(content)
+    qrcode.as_png(resize_exactly_to: 100).to_data_url
+  end
+
+  def png_qrcode
+    qr = RQRCode::QRCode.new('ESSEBTI Mohamed Amine')
+    ChunkyPNG::Image.from_datastream(qr.as_png.resize(100, 100).to_datastream).to_data_url
+  end
+
+  def base64_barcode
+    barcode = Barby::Code128.new('123456789A').to_image
+    ChunkyPNG::Image.from_datastream(barcode.resize(200, 50).to_datastream).to_data_url
+  end
+
+  protected
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
     # devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
-    added_attrs = [:username, :fistname, :lastname, :avatar, :role, :email, :password, :password_confirmation, :remember_me, :address, :latitude, :longitude]
+    added_attrs = [ :username, :role, :email, :password, :password_confirmation, :remember_me, :address, :latitude, :longitude, :category, :subsidiary]
      devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
   end
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_account_update_params
     # devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
-    added_attrs = [:username, :fistname, :lastname, :avatar, :role, :email, :password, :password_confirmation, :remember_me, :address, :latitude, :longitude]
+    added_attrs = [:username, :role, :email, :password, :password_confirmation, :remember_me, :address, :latitude, :longitude, :category, :subsidiary]
     devise_parameter_sanitizer.permit :account_update, keys: added_attrs
   end
 

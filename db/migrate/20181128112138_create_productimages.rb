@@ -1,4 +1,4 @@
-class CreateProductimages < ActiveRecord::Migration[5.2]
+class CreateProductimages < ActiveRecord::Migration[6.0]
   def change
     create_table :productimages do |t|
       t.text :alt

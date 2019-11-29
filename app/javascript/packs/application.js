@@ -1,16 +1,15 @@
 import "bootstrap";
 import "jquery";
-import "../password.js";
-import "../navbar.js";
-import "../uploadprodpics.js";
-import "../producttype.js";
-import "../upload_image.js";
-import "../search_range.js";
-import "../grant_role.js";
-
-
-//import "../navbar.js"
-//import "../uploadprodpics.js"
-
-
-
+// import "../components/datepicker.js";
+import "../components/grant_role.js";
+// import "../components/member.js";
+import "../components/navbar.js";
+import "../components/password.js";
+import "../components/producttype.js";
+// import "../components/search_range.js";
+import "../components/subscription.js";
+import "../components/subscription_bis.js";
+import "../components/upload_image.js";
+//import "../components/uploadprodpics.js";
+import "../components/global_variable.js";
+import "../components/progress_bar.js";

@@ -1,0 +1,42 @@
+<div id="subscriptionmodal" class="modal fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">x</button>
+      <h4 class="modal-title" id="myModalLabel"> Reglements du montant <%= @subscription.amount %></h4>
+    </div>
+    <div id="modal-body" class="modal-body">
+      <div class="form-login" >
+        <h1>Paiments</h1>
+
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">N° de Transaction</th>
+              <th scope="col">Montant</th>
+              <th scope="col">Type de reglement</th>
+              <th scope="col">User</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @payments.each do |payment| %>
+              <tr>
+                <td scope="row"><%= payment.webtransaction %></td>
+                <td><%= payment.amount %></td>
+                <td><%= Type.find(payment.type_id).value %></td>
+                <td><%= User.find(payment.user_id).username %></td>
+                <td><%= link_to '<i class="fas fa-trash"></i>'.html_safe, subscription_payment_path(@subscription, payment), method: :delete, data: {title:"Confirmation de la suppression", confirm: 'Êtes-vous sûr?' } %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+
+        <br>
+
+        <%= link_to '<i class="fas fa-folder-plus"> Nouveau reglment </i>'.html_safe, new_subscription_payment_path(@subscription), remote: true,data: { modal: true }%>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,171 @@
+<%= include_gon %>
+<%= simple_form_for(@subscription) do |f| %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+  <%= f.input :package,label: false, :as => :hidden, input_html: { id: "package"} %>
+  <%= f.input :member,label: false, :as => :hidden, input_html: { id: "member" }%>
+  <%= f.input :membersuplement,label: false, input_html: { id: "membersuplement"} %>
+  <%= f.input :tennis,label: false, :as => :hidden, input_html: { id: "tennis"} %>
+
+  <% if @subscriptionAction != 'create' %>
+   <section>
+
+      <div class="container">
+        <div class="left">
+          <div id="drag-elements">
+            <% @memberList.each do |recordMemberList|%>
+              <div>
+                <div class="photo-upload" >
+                  <div class="photo-preview container2">
+                    <% if recordMemberList.avatar.present? %>
+                      <% avatar = image_path recordMemberList.avatar %>
+                    <% else %>
+                      <% avatar = image_path("default_avatar.png") %>
+                    <% end %>
+                    <div id="photoPreview_<%= recordMemberList.id %>" data-member-id=<%= recordMemberList.id %> data-member-lien=<%= recordMemberList.type.value %> style="background-image: url(<%= avatar %>);">
+                      <input type="hidden" name="_token" value="{{csrf_token()}}">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+          <div id="drop-target">
+            <% @memberAbn.each do |recordMemberAbn|%>
+              <div>
+                <div class="photo-upload" >
+                  <div class="photo-preview container2">
+                    <% if recordMemberAbn.avatar.present? %>
+                      <% avatar = image_path recordMemberAbn.avatar %>
+                    <% else %>
+                      <% avatar = image_path("default_avatar.png") %>
+                    <% end %>
+                    <div id="photoPreview_<%= recordMemberAbn.id %>" data-member-id=<%= recordMemberAbn.id %> data-member-lien=<%= recordMemberAbn.type.value %> style="background-image: url(<%= avatar %>);">
+                      <input type="hidden" name="_token" value="{{csrf_token()}}">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <br>
+      <br>
+        <%= f.button :submit,"Enregistrer", class:"own-button btn-lg" %>
+      <br>
+      <br>
+      <%= f.input :amount, readonly: true, label: false, input_html: { id: "amount", class:"sprice-circle"} %>
+    </section>
+
+
+  <% else %>
+
+    <section>
+      <div class="container-fluid">
+        <div class="container">
+          <div class="row">
+            <!-- Start Col one -->
+            <div class="col-xs-12 col-sm-3 col-md-3">
+              <div class="card text-center">
+                <div class="title">
+                  <i class="fa fa-running" aria-hidden="true"></i>
+                  <h2>Basic</h2>
+                </div>
+                <div class="price">
+                  <h4><sup>d</sup><%= @packageBasic %></h4>
+                </div>
+                <div class="option">
+                  <ul>
+                  <li> <i class="fa fa-check" style="color: green" aria-hidden="true"></i> Inscription</li>
+                  <li> <i class="fa fa-times" style="color: red" aria-hidden="true"></i> Suplément enfant</li>
+                  <li> <i class="fa fa-times" style="color: red" aria-hidden="true"></i> Tennis </li>
+                  </ul>
+                </div>
+                <%= link_to '<i class="fas fa-marker edit-item">Souscrire</i>'.html_safe, subscriptions_path(:package => 'Basic', :amount => @packageBasic), :method => :post%>
+              </div>
+            </div>
+            <% if @suplementEnfant > 0 %>
+            <!-- END Col one -->
+            <div class="col-xs-12 col-sm-3 col-md-3">
+              <div class="card text-center">
+                <div class="title">
+                  <i class="fa fa-child" aria-hidden="true"></i>
+                  <h2>Suplément</h2>
+                </div>
+                <div class="price">
+                  <h4><sup>d</sup><%= @packageSuplement %> </h4>
+                </div>
+                <div class="option">
+                  <ul>
+                  <li> <i class="fa fa-check" style="color: green" aria-hidden="true"></i> Inscription </li>
+                  <li> <i class="fa fa-check" style="color: green" aria-hidden="true"></i> Suplément enfant </li>
+                  <li> <i class="fa fa-times" style="color: red" aria-hidden="true"></i> Tennis</li>
+                  </ul>
+                </div>
+                <%= link_to '<i class="fas fa-marker edit-item">Souscrire</i>'.html_safe, subscriptions_path(:package => 'Suplément', :amount => @packageSuplement), :method => :post%>
+              </div>
+            </div>
+            <% end %>
+            <!-- END Col two -->
+            <div class="col-xs-12 col-sm-3 col-md-3">
+              <div class="card text-center">
+                <div class="title">
+                  <i class="fa fa-racquet" aria-hidden="true"></i>
+                  <h2>Tennis</h2>
+                </div>
+                <div class="price">
+                  <h4><sup>d</sup><%= @packageTennis %></h4>
+                </div>
+                <div class="option">
+                  <ul>
+                  <li> <i class="fa fa-check" style="color: green" aria-hidden="true"></i> Inscription </li>
+                  <li> <i class="fa fa-check" style="color: green" aria-hidden="true"></i> Suplément enfant </li>
+                  <li> <i class="fa fa-check" style="color: green" aria-hidden="true"></i> Tennis</li>
+                  </ul>
+                </div>
+                <%= link_to '<i class="fas fa-marker edit-item">Souscrire</i>'.html_safe, subscriptions_path(:package => 'Tennis', :amount => @packageTennis), :method => :post%>
+              </div>
+            </div>
+            <!-- END Col three -->
+             <div class="col-xs-12 col-sm-3 col-md-3">
+              <div class="card text-center">
+                <div class="title">
+                  <i class="fa fa-user-edit" aria-hidden="true"></i>
+                  <h2>Personalisé</h2>
+                </div>
+                <div class="price">
+                  <h4><sup>d</sup>00.00</h4>
+                </div>
+                <div class="option">
+                  <ul>
+                  <li> <i class="fa fa-check" style="color: green"  aria-hidden="true"></i> Inscription </li>
+                  <li> <i class="fa fa-check" style="color: green"  aria-hidden="true"></i> Suplément (Personalisé)</li>
+                  <li> <i class="fa fa-check" style="color: green"  aria-hidden="true"></i> Tennis (Personalisé)</li>
+                  </ul>
+                </div>
+                <%= link_to '<i class="fas fa-marker edit-item">Souscrire</i>'.html_safe, subscriptions_path(:package => 'Personalisé', :packageTennisMember => '@packageTennisMember'), :method => :post%>
+              </div>
+            </div>
+            <!-- END Col Four -->
+          </div>
+        </div>
+      </div>
+      <br><br><br><br><br>
+      <div class="container">
+      <div class="col-xs-12 col-sm-12 col-md-12">
+        <%= link_to subscriptions_path do%>
+          <div class="own-login-button btn-lg" >Annuler</div>
+        <%end%>
+      </div>
+    </div>
+    </section>
+
+  <% end %>
+
+<% end %>
+
+
+
+
+
+

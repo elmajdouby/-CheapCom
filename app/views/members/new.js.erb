@@ -1,0 +1,10 @@
+
+$('<%= j render "new" %>').modal().on('shown.bs.modal',function() {
+  $("#user_avatar").on("change",function() {
+    readURL(this);
+  });
+});
+
+// $("#modalwindow").html('<%= j (render 'new') %>');
+// $("#newMemberModal").modal('show');
+// $("#modalwindow").slideDown(350);

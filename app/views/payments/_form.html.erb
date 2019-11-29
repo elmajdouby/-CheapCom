@@ -1,0 +1,38 @@
+
+<%= simple_form_for [@subscription, @payment] do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+    <div class="form-login" >
+      <div class="form-inputs">
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12">
+            <%= f.input :webtransaction,
+              label: "WebTransaction",
+            input_html: { autocomplete: "webtransaction", placeholder: "N° de Transaction ou Chèque" }%>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12">
+            <%= f.input :amount,
+                label: "Montant",
+                input_html: { autocomplete: "amount", placeholder: "Montant en DHs" } %>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12">
+            <%=f.label "Type reglement"%>
+            <%= f.collection_select(:type_id, Type.where(label: 'Paiment'), :id, :value, { :prompt => 'Paiment'}, { class: 'form-control' }) %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-actions">
+              <%= f.button :submit, class:"own-button btn-lg" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<% end %>

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Startdate:</strong>
+  <%= @badge.startdate %>
+</p>
+
+<p>
+  <strong>Enddate:</strong>
+  <%= @badge.enddate %>
+</p>
+
+<p>
+  <strong>Number:</strong>
+  <%= @badge.number %>
+</p>
+
+<p>
+  <strong>Member:</strong>
+  <%= @badge.member_id %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @badge.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_badge_path(@badge) %> |
+<%= link_to 'Back', badges_path %>

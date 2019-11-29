@@ -1,4 +1,4 @@
-class CreateSearcheds < ActiveRecord::Migration[5.2]
+class CreateSearcheds < ActiveRecord::Migration[6.0]
   def change
     create_table :searcheds do |t|
       t.string :keyword

@@ -1,36 +1,27 @@
 // Import your components CSS files here.
 @import "alert";
-@import "navbar";
 @import "cards";
-@import "products_navbar";
-@import "products_details";
-@import "footer";
 @import "caroussel";
-@import "dashboard";
-@import "products";
 @import "categories_navbar";
-@import "login-form";
-@import "producttypes";
-@import "payment";
-@import "map";
-@import "users";
-
+@import "dashboard";
+@import "footer";
+@import "grant_role";
 @import "graphs";
-
-@import "_grant_role";
-
-@import url('https://fonts.googleapis.com/css?family=Lato|Raleway|Roboto+Condensed');
-
-
-// font-family: 'Lato', sans-serif;
-
-// font-family: 'Roboto Condensed', sans-serif;
-// font-family: 'Raleway', sans-serif;
-
-.main-container{
-  margin-top: 70px;
-}
-
-.space{
-  margin-top: 100px;
-}
+@import "login_form";
+@import "map";
+@import "navbar";
+@import "product_new";
+@import "products";
+@import "products_details";
+@import "products_navbar";
+@import "qr";
+@import "subscription";
+@import "upload_image";
+@import "users";
+@import "subscription_package";
+@import "small_menu";
+@import "menu";
+@import "modal";
+@import "progress_bar";
+@import "fontawesome";
+@import "flickity";

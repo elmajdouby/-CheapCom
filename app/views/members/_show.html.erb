@@ -1,0 +1,40 @@
+<div class="form-login" >
+  <p>
+    <strong>Date de début:</strong>
+    <%= @member.startdate %>
+  </p>
+
+  <p>
+    <strong>Date fin:</strong>
+    <%= @member.enddate %>
+  </p>
+  <p>
+    <strong>Nom:</strong>
+    <%= @member.lastname %>
+  </p>
+
+  <p>
+    <strong>Prénom:</strong>
+    <%= @member.firstname %>
+  </p>
+
+  <p>
+    <strong>Date de naissance:</strong>
+    <%= @member.birthdate %>
+  </p>
+
+  <p>
+    <strong>Sexe:</strong>
+    <%= @member.sexe %>
+  </p>
+
+  <p>
+    <strong>Lien:</strong>
+    <%= @member.type.value %>
+  </p>
+  <%= link_to '<i class="fas fa-undo"> Retour</i>'.html_safe, members_path %>
+</div>
+
+
+
+

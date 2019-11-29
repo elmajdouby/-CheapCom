@@ -1,16 +1,16 @@
 {
-  "name": "_CheapCom",
+  "name": "OCPClub",
   "private": true,
   "dependencies": {
-    "@mapbox/mapbox-gl-geocoder": "^2.3.0",
     "@rails/webpacker": "3.5",
-    "bootstrap": "3",
-    "chart.js": "^2.7.3",
+    "bootstrap": "^4.3.1",
     "drift-zoom": "^1.3.3",
-    "jquery": "^3.3.1",
-    "mapbox-gl": "^0.52.0-beta.1",
+    "flatpickr": "^4.6.3",
+    "jquery": "^3.4.1",
+    "node": "^12.13.0",
     "node-schedule": "^1.3.1",
-    "places.js": "^1.14.0"
+    "places.js": "^1.14.0",
+    "popper.js": "^1.16.0"
   },
   "devDependencies": {
     "webpack-dev-server": "2.11.2"

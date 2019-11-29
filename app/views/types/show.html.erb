@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Startdate:</strong>
+  <%= @type.startdate %>
+</p>
+
+<p>
+  <strong>Enddate:</strong>
+  <%= @type.enddate %>
+</p>
+
+<p>
+  <strong>Label:</strong>
+  <%= @type.label %>
+</p>
+
+<p>
+  <strong>Value:</strong>
+  <%= @type.value %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @type.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_type_path(@type) %> |
+<%= link_to 'Back', types_path %>

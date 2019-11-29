@@ -1,5 +1,4 @@
 require_relative 'boot'
-
 require "rails"
 # Pick the frameworks you want:
 require "active_model/railtie"
@@ -17,7 +16,7 @@ require "sprockets/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 # config.action_view.embed_authenticity_token_in_remote_forms = true
-module Cheapcom
+module OcpClub
   class Application < Rails::Application
     config.generators do |generate|
           generate.assets false
@@ -34,7 +33,7 @@ module Cheapcom
 
     # Don't generate system test files.
     config.generators.system_tests = nil
-
-
+    config.i18n.default_locale = :fr
   end
+
 end

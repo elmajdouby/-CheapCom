@@ -1,0 +1,5 @@
+$('<%= j render "edit" %>').modal().on('shown.bs.modal',function() {
+  $("#user_avatar").on("change",function() {
+    readURL(this);
+  });
+});

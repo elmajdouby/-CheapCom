@@ -1,0 +1,16 @@
+.fas, .fab, .fa{
+  	font-size:24px;
+ 	color: #40ac47;
+	&:hover {
+      color: darken(#40ac47, 10%);
+      transition: all .4s ease-in-out;
+	}
+  }
+
+.glyphicon{
+	color: #40ac47;
+	&:hover {
+      color: darken(#40ac47, 10%);
+      transition: all .4s ease-in-out;
+	}
+}
