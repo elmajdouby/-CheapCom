@@ -35,7 +35,7 @@ gem 'dotenv-rails', groups: [:development, :test]
 # gem 'mini_magick', '~> 4.9', '>= 4.9.5'
 gem 'rails_admin', '>= 1.0.0.rc'
 gem 'listen', '~> 3.1.5'
-gem 'gon', '~> 6.2', '>= 6.2.1'
+gem 'gon', '~> 6.4'
 gem 'rqrcode', '~> 1.1', '>= 1.1.1'
 gem 'chunky_png', '~> 1.3', '>= 1.3.11'
 gem 'barby', '~> 0.6.8'
