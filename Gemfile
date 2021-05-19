@@ -15,7 +15,7 @@ gem 'bootsnap', '>= 1.4.5', require: false
 gem 'devise'
 #gem 'jbuilder', '~> 2.0'
 gem 'mysql2', '~> 0.5.2'
-gem 'puma', '~> 3.11'
+gem 'puma', '~> 5.3'
 gem 'rails', '~> 6.0.0'
 gem 'redis'
 gem "pundit"
